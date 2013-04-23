@@ -13,9 +13,8 @@ public class Server {
 			
 			while(true){				
 				Socket clientSocket = serverSocket.accept();
-				UserThread user = new UserThread(clientSocket);
+				UserThread user = new UserThread(clientSocket, users);
 				user.start();
-				users.add(new User("namnish",clientSocket));
 				
 			}
 			
