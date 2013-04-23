@@ -32,7 +32,7 @@ public class UserThread extends Thread {
 			String s;
 			while ((s = in.readLine()) != null) {
 
-				System.out.println(s + " |  Participant");
+				System.out.println(s + " |  Input på serversidan");
 				if ((s.startsWith("Q"))) {
 					System.out.println("Connection close by client command");
 					break;
