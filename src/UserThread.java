@@ -24,10 +24,15 @@ public class UserThread extends Thread {
 		try{
 		out = new PrintWriter(socket.getOutputStream(), true);
 		in = new BufferedReader(new InputStreamReader(
-				socket.getInputStream()));	
+				socket.getInputStream()));
+		
+		//Ta hand om användarnamn
 		String userName = in.readLine();
 		User user = new User(userName, socket);
 		users.add(user);
+		System.out.println(userName);
+		
+		//skicka meddelande
 		while(true){
 			String s;
 			while ((s = in.readLine()) != null) {

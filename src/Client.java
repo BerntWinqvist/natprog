@@ -20,7 +20,7 @@ public class Client {
 			if (socket.isConnected()) {
 				System.out.println("Connected to the server");
 				OutputStream out = socket.getOutputStream();
-				String name = "Stisse";					//ska komma som input från gui sen
+				String name = "Stisse \n";					//ska komma som input från gui sen
 				out.write(name.getBytes());
 			}
 			
