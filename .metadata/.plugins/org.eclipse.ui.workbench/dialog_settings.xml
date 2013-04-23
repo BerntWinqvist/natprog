@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<section name="ShowViewDialog">
+		<item value="358" key="DIALOG_WIDTH"/>
+		<item value="org.eclipse.egit.ui.RepositoriesView" key="ShowViewDialog.STORE_SELECTED_VIEW_ID"/>
+		<item value="216" key="DIALOG_Y_ORIGIN"/>
+		<item value="429" key="DIALOG_HEIGHT"/>
+		<item value="533" key="DIALOG_X_ORIGIN"/>
+		<item value="1|Sans|9.0|0|GTK|1|" key="DIALOG_FONT_NAME"/>
+		<list key="ShowViewDialog.STORE_EXPANDED_CATEGORIES_ID">
+			<item value="org.eclipse.egit.ui.GitCategory"/>
+		</list>
+	</section>
+	<section name="ImportExportAction">
+	</section>
+</section>

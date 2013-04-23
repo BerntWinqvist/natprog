@@ -8,3 +8,5 @@
 /ClientReceiveThread.class
 /Mailbox.class
 /MailboxReader.class
+/Question.class
+/QuestionReader.class
