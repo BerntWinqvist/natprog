@@ -8,12 +8,13 @@ public class Server {
 	public static void main(String args[]){
 		
 		Vector<User> users = new Vector<User>();
+		Mailbox box = new Mailbox();
 		try {
 			ServerSocket serverSocket = new ServerSocket(30000);
 			
 			while(true){				
 				Socket clientSocket = serverSocket.accept();
-				UserThread user = new UserThread(clientSocket, users);
+				UserThread user = new UserThread(clientSocket, users,box);
 				user.start();
 				
 			}

@@ -11,11 +11,12 @@ public class UserThread extends Thread {
 	private Vector<User> users;
 	private PrintWriter out;
 	private BufferedReader in;
-
+	private Mailbox box;
 	
-	public UserThread(Socket socket, Vector<User> users ){		
+	public UserThread(Socket socket, Vector<User> users, Mailbox box ){		
 		this.socket = socket;
 		this.users = users;
+		this.box =box;
 	}
 	
 	
@@ -28,6 +29,25 @@ public class UserThread extends Thread {
 		User user = new User(userName, socket);
 		users.add(user);
 		while(true){
+			String s;
+			while ((s = in.readLine()) != null) {
+
+				System.out.println(s + " |  Participant");
+				if ((s.startsWith("Q"))) {
+					System.out.println("Connection close by client command");
+					break;
+
+				} else if (s.startsWith("E")) {
+					out.println(s.substring(2));
+					out.flush();
+
+				} else if (s.startsWith("M")) {
+					box.setContent(s.substring(2));
+
+				}
+			}
+			
+			
 			
 		}
 		

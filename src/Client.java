@@ -7,7 +7,7 @@ import java.util.Scanner;
 
 public class Client {
 	private Socket socket;
-	private Scanner scan;
+	
 	private PrintWriter out;
 	private BufferedReader in;
 
@@ -18,19 +18,20 @@ public class Client {
 
 	public void connect(String host, String port) {
 
-		scan = new Scanner(System.in);
+		
 		int i = Integer.parseInt(port);
 		try {
-			socket = new Socket(host, i);
-			out = new PrintWriter(socket.getOutputStream(), true);
-			in = new BufferedReader(new InputStreamReader(
-					socket.getInputStream()));
+			socket = new Socket(host, i);		
 			if (socket.isConnected()) {
 				System.out.println("Connected to the server");
 			}
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+		ClientSendThread send = new ClientSendThread("Send-thread",socket);
+		ClientReceiveThread receive = new ClientReceiveThread("Receive-Thread",socket);
+		send.start();
+		receive.start();
 	
 	}
 	
