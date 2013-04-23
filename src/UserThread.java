@@ -40,7 +40,6 @@ public class UserThread extends Thread {
 				} else if (s.startsWith("E")) {
 					out.println(s.substring(2));
 					out.flush();
-
 				} else if (s.startsWith("M")) {
 					box.setContent(s.substring(2));
 

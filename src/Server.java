@@ -9,6 +9,8 @@ public class Server {
 		
 		Vector<User> users = new Vector<User>();
 		Mailbox box = new Mailbox();
+		MailboxReader reader = new MailboxReader(users,box);
+		reader.start();
 		try {
 			ServerSocket serverSocket = new ServerSocket(30000);
 			
@@ -17,8 +19,6 @@ public class Server {
 				UserThread user = new UserThread(clientSocket, users,box);
 				user.start();				
 			}
-			
-			
 			
 		} catch (IOException e) {
 			

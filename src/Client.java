@@ -1,15 +1,10 @@
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.PrintWriter;
+import java.io.*;
 import java.net.Socket;
-import java.util.Scanner;
+import java.util.*;
 
 public class Client {
 	private Socket socket;
 	
-	private PrintWriter out;
-	private BufferedReader in;
 
 	public Client(String host, String port) {
 
@@ -24,7 +19,11 @@ public class Client {
 			socket = new Socket(host, i);		
 			if (socket.isConnected()) {
 				System.out.println("Connected to the server");
+				OutputStream out = socket.getOutputStream();
+				String name = "Stisse";					//ska komma som input från gui sen
+				out.write(name.getBytes());
 			}
+			
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
