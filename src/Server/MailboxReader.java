@@ -1,5 +1,6 @@
-import java.io.IOException;
-import java.io.OutputStream;
+package Server;
+
+import java.io.*;
 import java.util.*;
 
 

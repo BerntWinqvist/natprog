@@ -1,3 +1,5 @@
+package Server;
+
 import java.util.*;
 
 
@@ -5,6 +7,7 @@ public class Question {
 	private ArrayList<String> quest;
 	private ArrayList<String> answer;
 	private int lastIndex;
+	private long startTime;
 	
 	public Question(){
 	quest = new ArrayList<String>();
@@ -17,11 +20,21 @@ public class Question {
 		int a =quest.size();
 		Random rand = new Random();
 		lastIndex = rand.nextInt(a);
+		startTime = System.currentTimeMillis();
 		return quest.get(lastIndex);
 	}
 	
 	public String getAnswer(){
 		return answer.get(lastIndex);
+	}
+	
+	public boolean isCorrect(String a){
+		return getAnswer().equalsIgnoreCase(a);
+	}
+	
+	public int getPoints(){
+		long elapsed = System.currentTimeMillis() - startTime;
+		return (int) (50 - elapsed/100);
 	}
 	
 	private void fillQuestion(){
