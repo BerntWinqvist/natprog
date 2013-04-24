@@ -11,11 +11,14 @@ public class UserThread extends Thread {
 	private PrintWriter out;
 	private BufferedReader in;
 	private Mailbox box;
+	private Question quest;
+	private User user;
 	
-	public UserThread(Socket socket, Vector<User> users, Mailbox box ){		
+	public UserThread(Socket socket, Vector<User> users, Mailbox box, Question quest ){		
 		this.socket = socket;
 		this.users = users;
 		this.box =box;
+		this.quest=quest;
 	}
 	
 	
@@ -27,7 +30,7 @@ public class UserThread extends Thread {
 		
 		//Ta hand om användarnamn
 		String userName = in.readLine();
-		User user = new User(userName, socket);
+		user = new User(userName, socket);
 		users.add(user);
 		System.out.println(userName);
 		
@@ -36,17 +39,24 @@ public class UserThread extends Thread {
 			String s;
 			while ((s = in.readLine()) != null) {
 
-				System.out.println(s + " |  Input på serversidan");
-				if ((s.startsWith("Q"))) {
+//				System.out.println(s + " |  Input på serversidan");
+				if ((s.startsWith("quit"))) {							//OBS detta fungerar inte riktigt som det ska......
 					System.out.println("Connection close by client command");
 					break;
 
-				} else if (s.startsWith("E")) {
+				} else if (s.startsWith("E ")) {
 					out.println(s.substring(2));
 					out.flush();
-				} else if (s.startsWith("M")) {
+				} else if (s.startsWith("M ")) {
 					box.setContent(s.substring(2));
 
+				}else{
+					if(quest.isCorrect(s)){
+						out.println("DU SVARADE RÄTT");						//Fixa poängsystem......
+						user.addPoints(quest.getPoints());
+						System.out.println(user.getPoints());
+					}
+					
 				}
 			}
 			

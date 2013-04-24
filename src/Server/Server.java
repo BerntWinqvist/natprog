@@ -11,14 +11,20 @@ public class Server {
 		
 		Vector<User> users = new Vector<User>();
 		Mailbox box = new Mailbox();
-		MailboxReader reader = new MailboxReader(users,box);
-		reader.start();
+		MailboxReader mReader = new MailboxReader(users,box);
+		QuestionMailbox qBox = new QuestionMailbox();
+		Question quest = new Question();
+		QuestionWriter qWrite = new QuestionWriter(qBox, quest);
+		QuestionReader qReader = new QuestionReader(users, qBox);
+		mReader.start();
+		qWrite.start();
+		qReader.start();
 		try {
 			ServerSocket serverSocket = new ServerSocket(30000);
 			
 			while(true){				
 				Socket clientSocket = serverSocket.accept();
-				UserThread user = new UserThread(clientSocket, users,box);
+				UserThread user = new UserThread(clientSocket, users,box, quest);
 				user.start();				
 			}
 			
