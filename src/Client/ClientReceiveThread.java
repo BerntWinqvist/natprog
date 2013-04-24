@@ -1,6 +1,6 @@
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
+package Client;
+
+import java.io.*;
 import java.net.*;
 
 

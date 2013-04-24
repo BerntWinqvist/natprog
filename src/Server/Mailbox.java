@@ -1,3 +1,5 @@
+package Server;
+
 public class Mailbox {
 	private String content;
 

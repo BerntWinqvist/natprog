@@ -1,6 +1,8 @@
+package Client;
+
 import java.io.*;
-import java.net.Socket;
-import java.util.*;
+import java.net.*;
+
 
 public class Client {
 	private Socket socket;
