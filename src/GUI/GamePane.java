@@ -14,14 +14,4 @@ public class GamePane extends JPanel {
 		
 	}
 	
-	public JComponent test1(){
-		
-		JTextField field = new JTextField();
-		return field;
-		
-	}
-	
-	
-
-
 }
