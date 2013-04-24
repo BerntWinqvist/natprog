@@ -1,15 +1,20 @@
 package GUI;
-
-import java.awt.BorderLayout;
-
+import java.awt.*;
 import javax.swing.*;
 
 public class StartPane extends JPanel {
 	
 	public StartPane(){
 		
-		JButton button = new JButton("startframe");
-		add(button);
+		
+		
+		
+		Font font = new Font("Quickz", Font.PLAIN,30);
+		JComponent top = new JLabel("Welcome to Quickz");
+		top.setFont(font);
+		add(top);
+		
+		
 		
 		
 	}
