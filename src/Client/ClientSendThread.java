@@ -28,7 +28,7 @@ public class ClientSendThread extends Thread {
 		
 		while(true){
 			String str = scan.nextLine();
-			System.out.println("Your input: " + str);
+//			System.out.println("Your input: " + str);
 
 			try {
 				if (!out.checkError()) {

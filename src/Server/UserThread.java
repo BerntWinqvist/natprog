@@ -52,9 +52,14 @@ public class UserThread extends Thread {
 
 				}else{
 					if(quest.isCorrect(s)){
-						out.println("DU SVARADE RÄTT");						//Fixa poängsystem......
-						user.addPoints(quest.getPoints());
-						System.out.println(user.getPoints());
+						if(!user.hasAnswered()){
+							out.println("DU SVARADE RÄTT");						
+							user.addPoints(quest.getPoints());
+//							System.out.println(user.getName() + " :" + user.getPoints());
+						}else{
+							out.println("DU HAR REDAN SVARAT PÅ DENNA FRÅGAN");
+						}
+						
 					}
 					
 				}

@@ -24,6 +24,7 @@ public class QuestionReader extends Thread {
 				for (int i = 0; i < users.size(); i++) {
 					out = users.get(i).getSocket().getOutputStream();
 					out.write(b);
+					users.get(i).setHasAnsweredToFalse();
 				}
 			} catch (IOException e) {
 				e.printStackTrace();

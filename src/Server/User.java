@@ -24,20 +24,25 @@ public class User {
 	}
 
 	public void addPoints(int newPoint) {
-		if(!hasAnswered){
-		points += newPoint;
-		hasAnswered = true;
+		if (!hasAnswered) {
+			points += newPoint;
+			hasAnswered = true;
 		}
 	}
 
 	public int getPoints() {
 		return points;
 	}
-	
-	public void resetPoints(){
+
+	public void resetPoints() {
 		points = 0;
 	}
-	public boolean hasAnswered(){
+
+	public boolean hasAnswered() {
 		return hasAnswered;
+	}
+
+	public void setHasAnsweredToFalse() {
+		hasAnswered = false;
 	}
 }
