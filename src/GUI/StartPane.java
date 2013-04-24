@@ -15,24 +15,36 @@ public class StartPane extends JPanel {
 	
 	public StartPane(){
 		
-		 setLayout(new BorderLayout());
+		 setLayout(new GridLayout(4,4));
+		 
 		
 		
 		Font font = new Font("Quickz", Font.PLAIN,30);
 		JComponent top = new JLabel("Welcome to Quickz");
 		top.setFont(font);		
-		add(top,BorderLayout.NORTH);
+		top.setLayout(new GridLayout(3,0));
+		add(top,BorderLayout.PAGE_START);
 		
 		JComponent servers = createServerList();
+		servers.setLayout(new GridLayout(0,1));
 		add(servers,BorderLayout.LINE_END);
 		getServers(); // Kallar på metod som hämtar aktuella servrar.
 		
-		JComponent login = loginPane(); 
-		add(login);
+		JComponent login = loginPane(); 	
+		login.setLayout(new GridLayout(0,2));
+		add(login,BorderLayout.CENTER);
+		
+		
+		
+		
+		JButton button = new JButton("Connect");
+		button.setLayout(new GridLayout(0,3));
+		
+		add(button);
 		
 		
 	}
-	
+	// Här fixat vi JListan 
 	public JComponent createServerList(){
 		
 		serverListModel = new DefaultListModel();
@@ -62,15 +74,19 @@ public class StartPane extends JPanel {
 		}
 		
 	}
-	
+	// Försök till att fixa en JLabel och JTextField
 	public JComponent loginPane(){
 		JLabel label = new JLabel("Username");
-		JTextField field = new JTextField();
+		JTextField field = new JTextField("Username",30);
 		field.setEditable(true);
+		field.setSize(10, 10);
+		
+		
 		JPanel p = new JPanel();
+		
 		p.setLayout(new BorderLayout());
-		p.add(label,BorderLayout.LINE_START);
-		p.add(field,BorderLayout.LINE_END);
+		p.add(label,BorderLayout.WEST);
+		p.add(field,BorderLayout.EAST);
 		
 		return p;
 		

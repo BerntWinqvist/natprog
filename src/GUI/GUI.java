@@ -24,7 +24,7 @@ private JTabbedPane tabbedPane;
 		
 		tabbedPane.setSelectedIndex(0);
 		frame.getContentPane().add(tabbedPane, BorderLayout.CENTER);
-
+		frame.pack();
 		frame.setSize(700, 500);
 		frame.setVisible(true);
 		
