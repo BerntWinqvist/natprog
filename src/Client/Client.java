@@ -8,12 +8,12 @@ public class Client {
 	private Socket socket;
 	
 
-	public Client(String host, String port) {
+	public Client(String host, String port, String userName) {
 
-		connect(host, port);
+		connect(host, port, userName);
 	}
 
-	public void connect(String host, String port) {
+	public void connect(String host, String port, String userName) {
 
 		
 		int i = Integer.parseInt(port);
@@ -22,7 +22,7 @@ public class Client {
 			if (socket.isConnected()) {
 				System.out.println("Connected to the server");
 				OutputStream out = socket.getOutputStream();
-				String name = "Prolof \n";					//ska komma som input från gui sen
+				String name = userName;					//ska komma som input från gui sen
 				out.write(name.getBytes());
 			}
 			
@@ -38,7 +38,7 @@ public class Client {
 	
 	public static void main(String args[]){
 		
-		new Client(args[0],args[1]);
+		new Client(args[0],args[1],args[2]);
 	}
 	
 	

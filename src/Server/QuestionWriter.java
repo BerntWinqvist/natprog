@@ -59,15 +59,11 @@ public class QuestionWriter extends Thread {
 				qbox.setContent(result);
 				if(points>hPoints){
 					hPoints = points;
-
-					System.out.println(p);
 					hPointsResult = u.getName();
 					hPointsResult+= " med ";
 					hPointsResult+= p;
 				}
 			}
-			System.out.println(hPoints);
-			System.out.println(hPointsResult);
 			qbox.setContent("VINNAREN ÄR: " + hPointsResult);
 			qbox.setContent("NÄSTA RUNDA BÖRJAR OM 20S");
 
