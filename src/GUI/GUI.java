@@ -12,7 +12,7 @@ private JTabbedPane tabbedPane;
 		
 		//Tabbarna
 		tabbedPane = new JTabbedPane();
-		
+//		
 		StartPane sf = new StartPane();	
 		tabbedPane.addTab("Startpane", sf);
 		
@@ -24,9 +24,10 @@ private JTabbedPane tabbedPane;
 		
 		tabbedPane.setSelectedIndex(0);
 		frame.getContentPane().add(tabbedPane, BorderLayout.CENTER);
-		frame.pack();
+
 		frame.setSize(700, 500);
 		frame.setVisible(true);
+		frame.setLocationRelativeTo(null);
 		
 		
 		
