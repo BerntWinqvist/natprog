@@ -2,6 +2,8 @@ package GUI;
 
 import javax.swing.*;
 
+import Server.Server;
+
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -109,9 +111,10 @@ public class ServerPane extends JPanel {
 		public void actionPerformed(ActionEvent event) {
 			i++;
 			System.out.println("Knapp-tryck HEHE");
-			System.out.println(fields[0].getText());
-			
-			
+			System.out.println(fields[0].getText() +"fields[0]");
+//			String test =fields[0].getText();
+//			 int port = Integer.parseInt(test);
+//			new Server(port);
 		}
 		
 		
