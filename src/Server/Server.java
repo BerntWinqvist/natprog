@@ -14,7 +14,7 @@ public class Server {
 		MailboxReader mReader = new MailboxReader(users,box);
 		QuestionMailbox qBox = new QuestionMailbox();
 		Question quest = new Question();
-		QuestionWriter qWrite = new QuestionWriter(qBox, quest);
+		QuestionWriter qWrite = new QuestionWriter(qBox, quest, users);
 		QuestionReader qReader = new QuestionReader(users, qBox);
 		mReader.start();
 		qWrite.start();
