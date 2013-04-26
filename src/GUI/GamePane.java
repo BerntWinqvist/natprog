@@ -77,7 +77,7 @@ public class GamePane extends JPanel {
 	}
 	
 	public void setChatText(String s){
-		chatText.append(s);
+		chatText.append(s + "\n");
 		chatText.setCaretPosition(chatText.getText().length());
 		
 		

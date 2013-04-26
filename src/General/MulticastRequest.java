@@ -3,10 +3,12 @@ package General;
 import java.net.*;
 import java.util.*;
 
-public class MulticastRequest extends Thread {
-	private ArrayList<String> serverList;
+import javax.swing.DefaultListModel;
 
-	public MulticastRequest(ArrayList<String> serverList) {
+public class MulticastRequest extends Thread {
+	private DefaultListModel serverList;
+
+	public MulticastRequest(DefaultListModel serverList) {
 		this.serverList = serverList;
 	}
 
@@ -31,7 +33,7 @@ public class MulticastRequest extends Thread {
 				ms.receive(dpReceive);
 				String receive = new String(dpReceive.getData(), 0,
 						dpReceive.getLength());
-				serverList.add(receive);
+				serverList.addElement(receive);
 				timeOut = System.currentTimeMillis();
 
 			}

@@ -146,12 +146,9 @@ public class StartPane extends JPanel {
 	// Här ska koden för att koppla ihop existerande servar till Listan finnas
 	public void getServers() {
 		ArrayList<String> servers = new ArrayList<String>();
-		MulticastRequest mcr = new MulticastRequest(servers);
+		MulticastRequest mcr = new MulticastRequest(serverListModel);
 		mcr.start();
-		
-		for (String server : servers) {
-			serverListModel.addElement(server);
-		}
+
 	}
 
 	// Försök till att fixa en JLabel och JTextField
