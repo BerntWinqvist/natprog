@@ -7,17 +7,25 @@ import java.util.*;
 public class Server extends Thread {
 	private ServerSocket serverSocket;
 	private int id;
-
-	public Server() {
+	private String serverName;
+	
+	public Server(String serverName) {
+		
 		id = 0;
 		try {
 			serverSocket = new ServerSocket(31337);
 		} catch (IOException e1) {
 			e1.printStackTrace();
 		}
+		
+		this.serverName = serverName;
 	}
 
 	public void run() {
+		
+		MulticastThread MT = new MulticastThread(serverName);
+		
+		
 
 		Vector<User> users = new Vector<User>();
 		Mailbox box = new Mailbox();
@@ -26,6 +34,7 @@ public class Server extends Thread {
 		Question quest = new Question();
 		QuestionWriter qWrite = new QuestionWriter(qBox, quest, users);
 		QuestionReader qReader = new QuestionReader(users, qBox);
+		MT.start();
 		mReader.start();
 		qWrite.start();
 		qReader.start();
