@@ -16,7 +16,7 @@ public class StartPane extends JPanel {
 	private GridBagConstraints c;
 	private String selectedServer; // Här läggs vald server från JListan
 
-	public StartPane() {
+	public StartPane(JTabbedPane tabbedPane) {
 		layout = new GridBagLayout();
 		c = new GridBagConstraints();
 		this.setLayout(layout);
@@ -28,7 +28,7 @@ public class StartPane extends JPanel {
 		c.weightx = 0;
 		c.weighty = 0;
 		c.gridx = 0;
-		c.ipady = 30;
+		c.ipady = 25;
 		c.gridy = 0;
 		add(label, c);
 
@@ -111,7 +111,7 @@ public class StartPane extends JPanel {
 		label.setFont(new Font("Quickz", Font.PLAIN, 8));
 		c.weightx = 0;
 		c.weighty = 0;
-		c.ipady = 100;
+		c.ipady = 130;
 		c.gridx = 0;
 		c.gridy = 5;
 		add(label, c);

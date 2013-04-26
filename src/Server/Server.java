@@ -8,10 +8,10 @@ public class Server extends Thread {
 	private ServerSocket serverSocket;
 	private int id;
 
-	public Server(int port) {
+	public Server() {
 		id = 0;
 		try {
-			serverSocket = new ServerSocket(port);
+			serverSocket = new ServerSocket(31337);
 		} catch (IOException e1) {
 			e1.printStackTrace();
 		}

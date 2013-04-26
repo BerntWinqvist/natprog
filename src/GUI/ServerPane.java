@@ -15,8 +15,9 @@ public class ServerPane extends JPanel {
 	private JTextField[] fields;
 	private JLabel emptyLabel;
 	private int i;
+	private JTabbedPane tabbedPane;
 
-	public ServerPane() { 
+	public ServerPane(JTabbedPane tabbedPane) { 
 		i=0;
 
 		fields = new JTextField[2];
@@ -27,8 +28,8 @@ public class ServerPane extends JPanel {
 
 		JComponent comp;
 
-		Font font = new Font("Quickz", Font.PLAIN, 30);
-		JComponent top = new JLabel("Welcome to Quickz");
+		Font font = new Font("Quickz", Font.PLAIN, 20);
+		JComponent top = new JLabel("Create a server");
 		top.setFont(font);
 		c.weightx = 1;
 		c.weighty = 1;
@@ -47,7 +48,7 @@ public class ServerPane extends JPanel {
 		c.gridy = 1;
 		add(comp, c);
 
-		comp = inputPane("Port number");
+		comp = inputPane("User name");
 		c.fill = GridBagConstraints.HORIZONTAL;
 		c.weightx = 20;
 		c.weighty = 1;
@@ -73,17 +74,29 @@ public class ServerPane extends JPanel {
 		c.weighty = 1;
 		c.gridx = 1;
 		c.gridwidth = 1;
-		c.gridy = 4;
+		c.gridy = 5;
 		add(status, c);
 
-		emptyLabel = new JLabel("                            ");
+		emptyLabel = new JLabel("   ");
 		c.fill = GridBagConstraints.HORIZONTAL;
 		c.weightx = 50;
 		c.weighty = 1;
 		c.gridx = 3;
-		c.gridy = 4;
+		c.gridy = 5;
 		c.gridwidth = 1;
 		add(emptyLabel, c);
+		
+		JButton stopButton = new JButton("Stop Server");
+		c.fill = GridBagConstraints.HORIZONTAL;
+		c.weightx = 0;
+		c.weighty = 0.5;
+		c.gridx = 2;
+		c.gridwidth = 1;
+		c.gridy = 4;
+		stopButton.addActionListener(new ActionHandler());
+		add(stopButton, c);
+		
+		
 		
 		fields[1].addMouseListener(new MouseAdapter() {
 			public void mouseReleased(MouseEvent e) {
@@ -123,15 +136,17 @@ public class ServerPane extends JPanel {
 		@Override
 		public void actionPerformed(ActionEvent event) {
 
-			String test = fields[0].getText();
+			String name = fields[1].getText();
 
 			try {
-				int port = Integer.parseInt(test);
-				Server serv = new Server(port);
+				
+				Server serv = new Server();
 				serv.start();
+//				tabbedPane.setSelectedIndex(0);
 				status.setText("Server running");
-				emptyLabel.setText("                ");
+				emptyLabel.setText("");
 			} catch (Exception e) {
+				e.printStackTrace();
 				emptyLabel.setText("Felaktigt portnummer");
 
 			}

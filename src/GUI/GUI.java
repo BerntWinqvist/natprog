@@ -13,10 +13,10 @@ private JTabbedPane tabbedPane;
 		//Tabbarna
 		tabbedPane = new JTabbedPane();
 		
-		StartPane sf = new StartPane();	
+		StartPane sf = new StartPane(tabbedPane);	
 		tabbedPane.addTab("Startpane", sf);
 		
-		ServerPane sp = new ServerPane();
+		ServerPane sp = new ServerPane(tabbedPane);
 		tabbedPane.addTab("Serverpane",sp);
 		
 		GamePane gp = new GamePane();
