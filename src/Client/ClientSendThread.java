@@ -10,11 +10,13 @@ public class ClientSendThread extends Thread {
 	private PrintWriter out;
 	private BufferedReader in;
 	private Scanner scan;
+	private boolean quit;
 	
 	public ClientSendThread(String name,Socket socket) {
 		super(name);
 		this.socket= socket;
 		scan = new Scanner(System.in);
+		quit=false;
 		
 	}
 	
@@ -26,9 +28,10 @@ public class ClientSendThread extends Thread {
 			e1.printStackTrace();
 		}
 		
-		while(true){
+		while(!quit){
 			String str = scan.nextLine();
-//			System.out.println("Your input: " + str);
+			
+			
 
 			try {
 				if (!out.checkError()) {
@@ -36,10 +39,13 @@ public class ClientSendThread extends Thread {
 					out.flush();
 				}else{
 				System.out.println("Connection closed");
-				break;
+				quit=true;
 				}
 			} catch (Exception e1) {
 				e1.printStackTrace();
+			}
+			if(str.compareTo("quit")==0){
+				quit=true;
 			}
 			
 		}

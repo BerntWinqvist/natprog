@@ -7,16 +7,21 @@ public class User {
 	private Socket socket;
 	private int points;
 	private boolean hasAnswered;
+	private int id;
 
-	public User(String name, Socket socket) {
+	public User(String name, Socket socket, int id) {
 		userName = name;
 		this.socket = socket;
+		this.id=id;
 		resetPoints();
 		hasAnswered = false;
 	}
 
 	public String getName() {
 		return userName;
+	}
+	public int getId(){
+		return id;
 	}
 
 	public Socket getSocket() {
