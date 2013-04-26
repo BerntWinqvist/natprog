@@ -31,7 +31,7 @@ public class Client {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		ClientSendThread send = new ClientSendThread("Send-thread",socket);
+		ClientSendThread send = new ClientSendThread("Send-thread",socket,gp);
 		ClientReceiveThread receive = new ClientReceiveThread("Receive-Thread",socket,gp);
 		send.start();
 		receive.start();

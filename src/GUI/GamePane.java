@@ -1,9 +1,12 @@
 package GUI;
 
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.*;
 
+import Client.Client;
 import GUI.StartPane.ServerSelectionListener;
 
 public class GamePane extends JPanel {
@@ -13,8 +16,12 @@ public class GamePane extends JPanel {
 	public static JTextField chatLine = null;
 	private JList userList;
 	private DefaultListModel userListModel;
-
+	private String chatLineText;
+	
 	public GamePane() {
+		
+		chatLineText="";
+		
 		setLayout(new BorderLayout());
 		JPanel chatPane = new JPanel(new BorderLayout());
 		chatText = new JTextArea(20, 50);
@@ -26,6 +33,7 @@ public class GamePane extends JPanel {
 				JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
 		chatLine = new JTextField();
 		chatLine.setEnabled(true);
+		chatLine.addActionListener(new ActionHandler());
 		chatPane.add(chatLine, BorderLayout.SOUTH);
 		chatPane.add(chatTextPane, BorderLayout.CENTER);
 		chatPane.setPreferredSize(new Dimension(530, 430));
@@ -82,7 +90,26 @@ public class GamePane extends JPanel {
 		
 		
 	}
+	public String scanNextLine(){
+		if(chatLineText.isEmpty()){
+			return "§";				//jag vill ha null här egentligen
+			
+		}else{
+			String temp = chatLineText;
+			chatLineText="";
+			return temp;
+		}
+	}
 	
+	
+	
+	class ActionHandler implements ActionListener {
+
+		public void actionPerformed(ActionEvent event) {
+			chatLineText = chatLine.getText();
+		}
+
+	}
 	
 	
 
