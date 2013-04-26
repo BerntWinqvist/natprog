@@ -5,7 +5,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.util.ArrayList;
+import java.util.HashMap;
 
 import javax.swing.*;
 import javax.swing.event.ListSelectionEvent;
@@ -25,9 +25,11 @@ public class StartPane extends JPanel {
 	private GridBagConstraints c;
 	private String selectedServer; // Här läggs vald server från JListan'
 	private JTabbedPane tabbedPane;
+	private String address;
+	private HashMap<String, String> servers;
 
 	public StartPane(JTabbedPane tabbedPane) {
-		this.tabbedPane =tabbedPane;
+		this.tabbedPane = tabbedPane;
 		layout = new GridBagLayout();
 		c = new GridBagConstraints();
 		this.setLayout(layout);
@@ -108,7 +110,16 @@ public class StartPane extends JPanel {
 		getServers();
 		add(servers, c);
 
-		
+		JButton refresh = new JButton("Refresh");
+		refresh.addActionListener(new ActionHandler2());
+		c.fill = GridBagConstraints.HORIZONTAL;
+		c.weightx = 0;
+		c.weighty = 0;
+		c.ipady = 1;
+		c.gridx = 1;
+		c.gridy = 5;
+		add(refresh, c);
+
 		JButton button = new JButton("Connect");
 		button.addActionListener(new ActionHandler());
 		c.fill = GridBagConstraints.HORIZONTAL;
@@ -116,7 +127,7 @@ public class StartPane extends JPanel {
 		c.weighty = 0;
 		c.ipady = 10;
 		c.gridx = 1;
-		c.gridy = 5;
+		c.gridy = 6;
 		add(button, c);
 
 		// RAD 5
@@ -127,7 +138,7 @@ public class StartPane extends JPanel {
 		c.weighty = 0;
 		c.ipady = 130;
 		c.gridx = 0;
-		c.gridy = 5;
+		c.gridy = 6;
 		add(label, c);
 	}
 
@@ -145,15 +156,15 @@ public class StartPane extends JPanel {
 
 	// Här ska koden för att koppla ihop existerande servar till Listan finnas
 	public void getServers() {
-		ArrayList<String> servers = new ArrayList<String>();
-		MulticastRequest mcr = new MulticastRequest(serverListModel);
+		servers = new HashMap<String, String>();
+		MulticastRequest mcr = new MulticastRequest(serverListModel, servers);
 		mcr.start();
 
 	}
 
 	// Försök till att fixa en JLabel och JTextField
 	public JComponent loginPane() {
-		final JTextField field = new JTextField("......", 30);
+		final JTextField field = new JTextField("", 30);
 		field.setEditable(true);
 		field.setSize(10, 10);
 		field.addMouseListener(new MouseAdapter() {
@@ -161,7 +172,7 @@ public class StartPane extends JPanel {
 				field.setText("");
 			}
 		});
-		this.field=field;
+		this.field = field;
 		JPanel p = new JPanel();
 		p.setLayout(new BorderLayout());
 		p.add(label, BorderLayout.WEST);
@@ -175,23 +186,43 @@ public class StartPane extends JPanel {
 		@Override
 		public void valueChanged(ListSelectionEvent arg0) {
 			selectedServer = (String) serverList.getSelectedValue();
-			System.out.println(selectedServer);
 		}
 	}
-	
-	
-	
+
 	class ActionHandler implements ActionListener {
-
-		@Override// När man trycker på Connect, här defineras vad som händer.
+		
+		@Override
+		// När man trycker på Connect, här defineras vad som händer.
 		public void actionPerformed(ActionEvent event) {
-
-			tabbedPane.setSelectedIndex(2);
 			String userName = field.getText();
-			Client client = new Client("panter-8",userName,(JPanel)tabbedPane.getComponentAt(2));	
+			String host = getHost();
+			if(host != null && !userName.equals("")) {
+				tabbedPane.setEnabledAt(0,false);
+				tabbedPane.setSelectedIndex(2);
+				Client client = new Client(host, userName,
+						(JPanel) tabbedPane.getComponentAt(2));
+				
 
+			}else{
+				JOptionPane dialog = new JOptionPane();
+				dialog.showMessageDialog(null,"Must choose a server and/or a username");
+			}
 		}
 
 	}
-	
+
+	class ActionHandler2 implements ActionListener {
+
+		@Override
+		// När man trycker på Connect, här defineras vad som händer.
+		public void actionPerformed(ActionEvent event) {
+			getServers();
+
+		}
+	}
+
+	public String getHost() {
+		return servers.get(selectedServer);
+	}
+
 }

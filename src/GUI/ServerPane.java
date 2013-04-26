@@ -142,12 +142,12 @@ public class ServerPane extends JPanel {
 			try {				
 				Server serv = new Server(serverName);
 				serv.start();
-				tabbedPane.setSelectedIndex(2);
+//				tabbedPane.setSelectedIndex(2);
 				status.setText("Server running");
 				emptyLabel.setText("");
 			} catch (Exception e) {
 				e.printStackTrace();
-				emptyLabel.setText("Felaktigt portnummer");
+		
 
 			}
 
