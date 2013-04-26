@@ -1,11 +1,15 @@
 package GUI;
 
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import javax.swing.*;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
+
+import Server.Server;
 
 public class StartPane extends JPanel {
 	private JList serverList;
@@ -14,9 +18,11 @@ public class StartPane extends JPanel {
 	private JLabel label;
 	private GridBagLayout layout;
 	private GridBagConstraints c;
-	private String selectedServer; // Här läggs vald server från JListan
+	private String selectedServer; // Här läggs vald server från JListan'
+	private JTabbedPane tabbedPane;
 
 	public StartPane(JTabbedPane tabbedPane) {
+		this.tabbedPane =tabbedPane;
 		layout = new GridBagLayout();
 		c = new GridBagConstraints();
 		this.setLayout(layout);
@@ -96,7 +102,9 @@ public class StartPane extends JPanel {
 		c.ipady = 100;
 		add(servers, c);
 		getServers();
+		
 		JButton button = new JButton("Connect");
+		button.addActionListener(new ActionHandler());
 		c.fill = GridBagConstraints.HORIZONTAL;
 		c.weightx = 0;
 		c.weighty = 0;
@@ -162,4 +170,19 @@ public class StartPane extends JPanel {
 			System.out.println(selectedServer);
 		}
 	}
+	
+	
+	
+	class ActionHandler implements ActionListener {
+
+		@Override// När man trycker på Connect, här defineras vad som händer.
+		public void actionPerformed(ActionEvent event) {
+
+			tabbedPane.setSelectedIndex(2);
+
+
+		}
+
+	}
+	
 }

@@ -19,7 +19,7 @@ public class ServerPane extends JPanel {
 
 	public ServerPane(JTabbedPane tabbedPane) { 
 		i=0;
-
+		this.tabbedPane = tabbedPane;
 		fields = new JTextField[2];
 		GridBagLayout layout = new GridBagLayout();
 		GridBagConstraints c = new GridBagConstraints();
@@ -142,7 +142,7 @@ public class ServerPane extends JPanel {
 				
 				Server serv = new Server();
 				serv.start();
-//				tabbedPane.setSelectedIndex(0);
+				tabbedPane.setSelectedIndex(2);
 				status.setText("Server running");
 				emptyLabel.setText("");
 			} catch (Exception e) {
