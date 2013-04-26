@@ -6,8 +6,10 @@ import java.util.*;
 
 public class Server extends Thread {
 	private ServerSocket serverSocket;
+	private int id;
 
 	public Server(int port) {
+		id = 0;
 		try {
 			serverSocket = new ServerSocket(port);
 		} catch (IOException e1) {
@@ -28,13 +30,12 @@ public class Server extends Thread {
 		qWrite.start();
 		qReader.start();
 		try {
-			System.out.println("Innan while(true) i server");
 			while (true) {
 				Socket clientSocket = serverSocket.accept();
 				UserThread user = new UserThread(clientSocket, users, box,
-						quest);
+						quest, id);
+				id++;
 				user.start();
-				System.out.println("Inne i while(true) i server");
 			}
 
 		} catch (IOException e) {
