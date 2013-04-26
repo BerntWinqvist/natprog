@@ -164,7 +164,7 @@ public class StartPane extends JPanel {
 
 	// Försök till att fixa en JLabel och JTextField
 	public JComponent loginPane() {
-		final JTextField field = new JTextField("......", 30);
+		final JTextField field = new JTextField("", 30);
 		field.setEditable(true);
 		field.setSize(10, 10);
 		field.addMouseListener(new MouseAdapter() {
@@ -196,12 +196,17 @@ public class StartPane extends JPanel {
 		// När man trycker på Connect, här defineras vad som händer.
 		public void actionPerformed(ActionEvent event) {
 
-			tabbedPane.setSelectedIndex(2);
 			String userName = field.getText();
 			String host = getHost();
-			Client client = new Client(host, userName,
-					(JPanel) tabbedPane.getComponentAt(2));
+			if(host != null && !userName.equals("")) {
+				tabbedPane.setSelectedIndex(2);
+				Client client = new Client(host, userName,
+						(JPanel) tabbedPane.getComponentAt(2));
 
+			}else{
+				JOptionPane dialog = new JOptionPane();
+				dialog.showMessageDialog(null,"Must choose a server and/or a username");
+			}
 		}
 
 	}
