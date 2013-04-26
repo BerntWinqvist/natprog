@@ -3,22 +3,24 @@ package Client;
 import java.io.*;
 import java.net.*;
 
+import javax.swing.*;
+
 
 public class Client {
 	private Socket socket;
-	
+	private JPanel gp;
 
-	public Client(String host, String port, String userName) {
-
-		connect(host, port, userName);
+	public Client(String host, String userName,JPanel gp) {
+		this.gp = gp;
+		connect(host, userName);
 	}
 
-	public void connect(String host, String port, String userName) {
+	public void connect(String host, String userName) {
 
 		
-		int i = Integer.parseInt(port);
+		
 		try {
-			socket = new Socket(host, i);		
+			socket = new Socket(host, 31337);		
 			if (socket.isConnected()) {
 				System.out.println("Connected to the server");
 				OutputStream out = socket.getOutputStream();
@@ -30,17 +32,17 @@ public class Client {
 			e.printStackTrace();
 		}
 		ClientSendThread send = new ClientSendThread("Send-thread",socket);
-		ClientReceiveThread receive = new ClientReceiveThread("Receive-Thread",socket);
+		ClientReceiveThread receive = new ClientReceiveThread("Receive-Thread",socket,gp);
 		send.start();
 		receive.start();
 	
 	}
 	
-	public static void main(String args[]){
-		
-		new Client(args[0],args[1],args[2]);
-	}
-	
+//	public static void main(String args[]){
+//		
+//		new Client(args[0],args[1],args[2]);
+//	}
+//	
 	
 
 }

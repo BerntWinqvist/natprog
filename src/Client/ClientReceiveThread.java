@@ -3,14 +3,19 @@ package Client;
 import java.io.*;
 import java.net.*;
 
+import javax.swing.JPanel;
+
+import GUI.GamePane;
+
 
 public class ClientReceiveThread extends Thread {
 	private Socket socket;
 	private BufferedReader in;	
-	public ClientReceiveThread(String name ,Socket socket){
+	private GamePane gp;
+	public ClientReceiveThread(String name ,Socket socket,JPanel gp){
 		super(name);		
 		this.socket = socket;
-		
+		this.gp= (GamePane)gp;
 	}
 	
 	
@@ -23,7 +28,7 @@ public class ClientReceiveThread extends Thread {
 
 				String s;
 				while ((s = in.readLine()) != null) {					
-					System.out.println(s);
+					gp.setChatText(s);
 				}
 			}
 

@@ -9,6 +9,7 @@ import javax.swing.*;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
+import Client.Client;
 import Server.Server;
 
 public class StartPane extends JPanel {
@@ -16,6 +17,7 @@ public class StartPane extends JPanel {
 	private DefaultListModel serverListModel;
 	private JButton button;
 	private JLabel label;
+	private JTextField field;
 	private GridBagLayout layout;
 	private GridBagConstraints c;
 	private String selectedServer; // Här läggs vald server från JListan'
@@ -154,6 +156,7 @@ public class StartPane extends JPanel {
 				field.setText("");
 			}
 		});
+		this.field=field;
 		JPanel p = new JPanel();
 		p.setLayout(new BorderLayout());
 		p.add(label, BorderLayout.WEST);
@@ -179,7 +182,8 @@ public class StartPane extends JPanel {
 		public void actionPerformed(ActionEvent event) {
 
 			tabbedPane.setSelectedIndex(2);
-
+			String userName = field.getText();
+			Client client = new Client("panter-8",userName,(JPanel)tabbedPane.getComponentAt(2));	
 
 		}
 

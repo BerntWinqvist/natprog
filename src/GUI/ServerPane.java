@@ -139,8 +139,7 @@ public class ServerPane extends JPanel {
 			String name = fields[1].getText();
 			String serverName = fields[0].getText();
 
-			try {
-				
+			try {				
 				Server serv = new Server(serverName);
 				serv.start();
 				tabbedPane.setSelectedIndex(2);

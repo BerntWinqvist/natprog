@@ -35,7 +35,6 @@ public class GamePane extends JPanel {
 		add(westPanel,BorderLayout.WEST);
 		
 		JPanel eastPanel = new JPanel();
-//		eastPanel.setLayout(new BorderLayout());
 		JPanel eastNorthPanel = new JPanel();
 		
 		JLabel label = new JLabel("Connected users");
@@ -51,6 +50,8 @@ public class GamePane extends JPanel {
 		eastPanel.add(yourScore);
 		add(eastPanel);
 		getUser();
+		
+		
 
 	}
 	
@@ -73,6 +74,12 @@ public class GamePane extends JPanel {
 		for (int i = 0; i < 10; i++) {
 			userListModel.addElement("User " + i);
 		}
+	}
+	
+	public void setChatText(String s){
+		chatText.setText(s);
+		
+		
 	}
 	
 	
