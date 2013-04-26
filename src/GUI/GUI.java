@@ -12,7 +12,7 @@ private JTabbedPane tabbedPane;
 		
 		//Tabbarna
 		tabbedPane = new JTabbedPane();
-//		
+		
 		StartPane sf = new StartPane();	
 		tabbedPane.addTab("Startpane", sf);
 		

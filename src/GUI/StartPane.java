@@ -21,7 +21,7 @@ public class StartPane extends JPanel {
 		c = new GridBagConstraints();
 		this.setLayout(layout);
 
-		// RAD 1
+		// RAD 0
 		label = new JLabel(" ");
 		c.fill = GridBagConstraints.HORIZONTAL;
 		label.setFont(new Font("Quickz", Font.PLAIN, 8));
@@ -32,7 +32,7 @@ public class StartPane extends JPanel {
 		c.gridy = 0;
 		add(label, c);
 
-		// RAD 2
+		// RAD 1
 		label = new JLabel(" ");
 		c.fill = GridBagConstraints.HORIZONTAL;
 		label.setFont(new Font("Quickz", Font.PLAIN, 8));
@@ -58,9 +58,12 @@ public class StartPane extends JPanel {
 		c.gridx = 2;
 		c.gridy = 1;
 		add(label, c);
+
+		// RAD 2
 		label = new JLabel("Username: ");
 		label.setFont(new Font("Quickz", Font.PLAIN, 14));
 		c.anchor = GridBagConstraints.LINE_START;
+		c.ipady = 5;
 		c.gridy = 2;
 		c.gridx = 0;
 		add(label, c);
@@ -73,14 +76,23 @@ public class StartPane extends JPanel {
 		c.gridx = 1;
 		c.gridy = 2;
 		add(login, c);
+
+		// RAD 3
+		label = new JLabel("Select a server: ");
+		label.setFont(new Font("Quickz", Font.PLAIN, 14));
+		c.anchor = GridBagConstraints.LINE_START;
+		c.ipady = 0;
+		c.gridy = 3;
+		c.gridx = 1;
+		add(label, c);
+
+		// RAD 4
 		JComponent servers = createServerList();
 		c.fill = GridBagConstraints.HORIZONTAL;
 		servers.setLayout(new GridLayout(0, 1));
 		servers.setSize(50, 50);
-		c.weightx = 50;
-		c.weighty = 0;
-		c.gridx = 0;
-		c.gridy = 3;
+		c.gridx = 1;
+		c.gridy = 4;
 		c.ipady = 100;
 		add(servers, c);
 		getServers();
@@ -89,10 +101,20 @@ public class StartPane extends JPanel {
 		c.weightx = 0;
 		c.weighty = 0;
 		c.ipady = 10;
-		c.ipadx = 150;
-		c.gridx = 0;
-		c.gridy = 4;
+		c.gridx = 1;
+		c.gridy = 5;
 		add(button, c);
+
+		// RAD 5
+		label = new JLabel(" ");
+		c.fill = GridBagConstraints.HORIZONTAL;
+		label.setFont(new Font("Quickz", Font.PLAIN, 8));
+		c.weightx = 0;
+		c.weighty = 0;
+		c.ipady = 100;
+		c.gridx = 0;
+		c.gridy = 5;
+		add(label, c);
 	}
 
 	public JComponent createServerList() {
