@@ -11,6 +11,7 @@ import java.awt.event.ActionListener;
 public class ServerPane extends JPanel {
 	private JLabel status;
 	private JTextField[] fields;
+	private JLabel emptyLabel;
 
 	public ServerPane() {
 
@@ -75,14 +76,14 @@ public class ServerPane extends JPanel {
 		c.gridy = 4;
 		add(status,c);
 		
-		status = new JLabel("                            ");
+		emptyLabel= new JLabel("                            ");
 		c.fill = GridBagConstraints.HORIZONTAL;		
 		c.weightx=50;
 		c.weighty=1;
 		c.gridx = 3;
 		c.gridy = 4;
 		c.gridwidth = 1;
-		add(status,c);
+		add(emptyLabel,c);
 		
 		
 				
@@ -106,15 +107,25 @@ public class ServerPane extends JPanel {
 	 
 	// Vad som händer när du trycker på knapps
 	class ActionHandler implements ActionListener{
-	int i =0;
+	
 		@Override
 		public void actionPerformed(ActionEvent event) {
-			i++;
-			System.out.println("Knapp-tryck HEHE");
-			System.out.println(fields[0].getText() +"fields[0]");
-//			String test =fields[0].getText();
-//			 int port = Integer.parseInt(test);
-//			new Server(port);
+			
+			
+			String test =fields[0].getText();
+			
+			try{
+			int port = Integer.parseInt(test);	
+			Server serv = new Server(port);
+			serv.start();
+			status.setText("Server running");
+			emptyLabel.setText("                ");
+			}catch(Exception e){
+				emptyLabel.setText("Felaktigt portnummer");
+				
+			}
+			
+			
 		}
 		
 		
