@@ -105,8 +105,9 @@ public class StartPane extends JPanel {
 		c.gridx = 1;
 		c.gridy = 4;
 		c.ipady = 100;
-		add(servers, c);
 		getServers();
+		add(servers, c);
+
 		
 		JButton button = new JButton("Connect");
 		button.addActionListener(new ActionHandler());
