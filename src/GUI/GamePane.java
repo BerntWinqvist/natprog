@@ -29,12 +29,9 @@ public class GamePane extends JPanel {
 		chatPane.add(chatLine, BorderLayout.SOUTH);
 		chatPane.add(chatTextPane, BorderLayout.CENTER);
 		chatPane.setPreferredSize(new Dimension(530, 430));
-		add(chatPane,BorderLayout.WEST);
-		
+		add(chatPane,BorderLayout.WEST);		
 		JComponent list = createUserList();
-		add(list,BorderLayout.EAST);
-			
-			
+		add(list,BorderLayout.EAST);		
 		
 
 	}
