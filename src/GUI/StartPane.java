@@ -186,22 +186,22 @@ public class StartPane extends JPanel {
 		@Override
 		public void valueChanged(ListSelectionEvent arg0) {
 			selectedServer = (String) serverList.getSelectedValue();
-			System.out.println(selectedServer);
 		}
 	}
 
 	class ActionHandler implements ActionListener {
-
+		
 		@Override
 		// När man trycker på Connect, här defineras vad som händer.
 		public void actionPerformed(ActionEvent event) {
-
 			String userName = field.getText();
 			String host = getHost();
 			if(host != null && !userName.equals("")) {
+				tabbedPane.setEnabledAt(0,false);
 				tabbedPane.setSelectedIndex(2);
 				Client client = new Client(host, userName,
 						(JPanel) tabbedPane.getComponentAt(2));
+				
 
 			}else{
 				JOptionPane dialog = new JOptionPane();
@@ -217,7 +217,6 @@ public class StartPane extends JPanel {
 		// När man trycker på Connect, här defineras vad som händer.
 		public void actionPerformed(ActionEvent event) {
 			getServers();
-			System.out.println("Tried to refresh");
 
 		}
 	}
