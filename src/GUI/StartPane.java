@@ -5,11 +5,14 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.ArrayList;
+
 import javax.swing.*;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
 import Client.Client;
+import General.MulticastRequest;
 import Server.Server;
 
 public class StartPane extends JPanel {
@@ -141,8 +144,12 @@ public class StartPane extends JPanel {
 
 	// Här ska koden för att koppla ihop existerande servar till Listan finnas
 	public void getServers() {
-		for (int i = 0; i < 10; i++) {
-			serverListModel.addElement("Server " + i);
+		ArrayList<String> servers = new ArrayList<String>();
+		MulticastRequest mcr = new MulticastRequest(servers);
+		mcr.start();
+		
+		for (String server : servers) {
+			serverListModel.addElement(server);
 		}
 	}
 
