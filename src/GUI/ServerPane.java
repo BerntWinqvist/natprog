@@ -137,10 +137,11 @@ public class ServerPane extends JPanel {
 		public void actionPerformed(ActionEvent event) {
 
 			String name = fields[1].getText();
+			String serverName = fields[0].getText();
 
 			try {
 				
-				Server serv = new Server();
+				Server serv = new Server(serverName);
 				serv.start();
 				tabbedPane.setSelectedIndex(2);
 				status.setText("Server running");

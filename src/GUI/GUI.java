@@ -22,13 +22,13 @@ private JTabbedPane tabbedPane;
 		GamePane gp = new GamePane();
 		tabbedPane.addTab("GamePane", gp);
 		
-		tabbedPane.setSelectedIndex(1);
+		tabbedPane.setSelectedIndex(2);
 		frame.getContentPane().add(tabbedPane, BorderLayout.CENTER);
 
 		frame.setSize(700, 500);
 		frame.setVisible(true);
 		frame.setLocationRelativeTo(null);
-		
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		
 	}

@@ -29,15 +29,33 @@ public class GamePane extends JPanel {
 		chatPane.add(chatLine, BorderLayout.SOUTH);
 		chatPane.add(chatTextPane, BorderLayout.CENTER);
 		chatPane.setPreferredSize(new Dimension(530, 430));
-		add(chatPane,BorderLayout.WEST);		
-		JComponent list = createUserList();
-		add(list,BorderLayout.EAST);		
+		JPanel westPanel = new JPanel();
 		
+		westPanel.add(chatPane,BorderLayout.WEST);	
+		add(westPanel,BorderLayout.WEST);
+		
+		JPanel eastPanel = new JPanel();
+//		eastPanel.setLayout(new BorderLayout());
+		JPanel eastNorthPanel = new JPanel();
+		
+		JLabel label = new JLabel("Connected users");
+		eastPanel.setLayout(new GridLayout(3,0));
+		eastNorthPanel.add(label);		
+		JComponent list = createUserList();		
+		eastNorthPanel.add(list);		
+		
+		eastPanel.add(eastNorthPanel);
+		JLabel yourName = new JLabel("Your user name: ");
+		JLabel yourScore = new JLabel("Your score: ");
+		eastPanel.add(yourName);
+		eastPanel.add(yourScore);
+		add(eastPanel);
+		getUser();
 
 	}
 	
 	
-	
+	// Skapar listan som ska fyllas med users 
 	public JComponent createUserList() {
 		userListModel = new DefaultListModel();
 		userList = new JList(userListModel);
