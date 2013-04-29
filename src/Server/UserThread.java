@@ -33,7 +33,10 @@ public class UserThread extends Thread {
 			String userName = in.readLine();
 			user = new User(userName, socket, id);
 			users.add(user);
-			System.out.println(userName);
+			box.setContent("%%%%%%"+userName);
+			for(int i = 0; i<users.size();i++){
+				out.println("%%%%%%" + users.get(i).getName());
+			}
 			boolean quit = false;
 			// skicka meddelande
 			while (!quit) {
@@ -61,8 +64,6 @@ public class UserThread extends Thread {
 								out.println("DU SVARADE RÄTT");
 								user.addPoints(quest.getPoints());
 								out.println("&&&&&" + user.getPoints());
-								// System.out.println(user.getName() + " :" +
-								// user.getPoints());
 							} else {
 								out.println("DU HAR REDAN SVARAT PÅ DENNA FRÅGAN");
 							}

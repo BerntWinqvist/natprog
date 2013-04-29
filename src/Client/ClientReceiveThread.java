@@ -30,7 +30,10 @@ public class ClientReceiveThread extends Thread {
 				while ((s = in.readLine()) != null) {	
 					if(s.startsWith("&&&&&")){
 						gp.setPoints(s.substring(5));
-					}else{
+					}else if(s.startsWith("%%%%%%")){
+						gp.setUser(s.substring(6));
+					}
+					else{
 						gp.setChatText(s);
 					}
 				}

@@ -68,7 +68,6 @@ public class GamePane extends JPanel {
 		button.addActionListener(new ActionHandler2());
 		bPanel.add(button);
 		add(eastPanel);
-		getUser();
 
 	}
 
@@ -86,10 +85,8 @@ public class GamePane extends JPanel {
 	}
 
 	// Metod för att fylla listan med inloggade users
-	public void getUser() {
-		for (int i = 0; i < 10; i++) {
-			userListModel.addElement("User " + i);
-		}
+	public void setUser(String user) {
+			userListModel.addElement(user);
 	}
 
 	public void setChatText(String s) {
@@ -133,10 +130,6 @@ public class GamePane extends JPanel {
 		tabbedPane.setEnabledAt(2,false);
 		tabbedPane.setEnabledAt(0,true);
 		tabbedPane.setEnabledAt(1,true);
-
-
-
-
 		chatLineText="quit";
 		}
 
