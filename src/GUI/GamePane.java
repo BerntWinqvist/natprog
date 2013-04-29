@@ -17,11 +17,12 @@ public class GamePane extends JPanel {
 	private JList userList;
 	private DefaultListModel userListModel;
 	private String chatLineText;
-	
+	private JLabel yourName;
+
 	public GamePane() {
-		
-		chatLineText="";
-		
+
+		chatLineText = "";
+
 		setLayout(new BorderLayout());
 		JPanel chatPane = new JPanel(new BorderLayout());
 		chatText = new JTextArea(20, 50);
@@ -38,71 +39,78 @@ public class GamePane extends JPanel {
 		chatPane.add(chatTextPane, BorderLayout.CENTER);
 		chatPane.setPreferredSize(new Dimension(530, 430));
 		JPanel westPanel = new JPanel();
-		
-		westPanel.add(chatPane,BorderLayout.WEST);	
-		add(westPanel,BorderLayout.WEST);
-		
+
+		westPanel.add(chatPane, BorderLayout.WEST);
+		add(westPanel, BorderLayout.WEST);
+
 		JPanel eastPanel = new JPanel();
 		JPanel eastNorthPanel = new JPanel();
-		
+
 		JLabel label = new JLabel("Connected users");
-		eastPanel.setLayout(new GridLayout(3,0));
-		eastNorthPanel.add(label);		
-		JComponent list = createUserList();		
-		eastNorthPanel.add(list);		
-		
+		eastPanel.setLayout(new GridLayout(4, 0));
+		eastNorthPanel.add(label);
+		JComponent list = createUserList();
+		eastNorthPanel.add(list);
+
 		eastPanel.add(eastNorthPanel);
-		JLabel yourName = new JLabel("Your user name: ");
+		yourName = new JLabel("Your user name: ");
+		
 		JLabel yourScore = new JLabel("Your score: ");
+		JLabel playerScore = new JLabel(""); //Hämta användarens poäng
+		JPanel bPanel = new JPanel();
 		eastPanel.add(yourName);
 		eastPanel.add(yourScore);
+		eastPanel.add(bPanel);
+		
+		JButton button = new JButton("Disconnect");
+		bPanel.add(button);
 		add(eastPanel);
 		getUser();
-		
-		
 
 	}
-	
-	
-	// Skapar listan som ska fyllas med users 
+
+	// Skapar listan som ska fyllas med users
 	public JComponent createUserList() {
 		userListModel = new DefaultListModel();
 		userList = new JList(userListModel);
 		userList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		userList.setPrototypeCellValue("123456789012");
-		
+
 		JScrollPane scrollPane = new JScrollPane(userList);
 		JPanel panel = new JPanel();
 		panel.add(scrollPane);
 		return panel;
 	}
-	
-	//Metod för att fylla listan med inloggade users
-	public void getUser(){
+
+	// Metod för att fylla listan med inloggade users
+	public void getUser() {
 		for (int i = 0; i < 10; i++) {
 			userListModel.addElement("User " + i);
 		}
 	}
-	
-	public void setChatText(String s){
+
+	public void setChatText(String s) {
 		chatText.append(s + "\n");
 		chatText.setCaretPosition(chatText.getText().length());
-		
-		
+
 	}
-	public String scanNextLine(){
-		if(chatLineText.isEmpty()){
-			return "§§§§§§§§§§";				
-			
-		}else{
+
+	public String scanNextLine() {
+		if (chatLineText.isEmpty()) {
+			return "§§§§§§§§§§";
+
+		} else {
 			String temp = chatLineText;
-			chatLineText="";
+			chatLineText = "";
 			return temp;
 		}
 	}
 	
-	
-	
+	public void setUserName(String userName){
+		
+		yourName.setText("<html>Your user name: <br/>" + userName +"</html>");
+	}
+
 	class ActionHandler implements ActionListener {
 
 		public void actionPerformed(ActionEvent event) {
@@ -111,7 +119,5 @@ public class GamePane extends JPanel {
 		}
 
 	}
-	
-	
 
 }
