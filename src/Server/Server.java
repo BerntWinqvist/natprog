@@ -48,8 +48,7 @@ public class Server extends Thread {
 				id++;
 				user.start();
 				if(users.isEmpty() && !firstUser){
-					serverRunning=false;
-					
+					serverRunning=false;					
 				}
 				firstUser=false;
 			

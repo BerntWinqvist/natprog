@@ -20,9 +20,10 @@ public class GamePane extends JPanel {
 	private JLabel yourName;
 	private JLabel yourScore;
 	private JTabbedPane tabbedPane;
+	private boolean host;
 
 	public GamePane(JTabbedPane tabbedPane) {
-
+		host = false;
 		chatLineText = "";
 		this.tabbedPane = tabbedPane;
 		setLayout(new BorderLayout());
@@ -77,7 +78,7 @@ public class GamePane extends JPanel {
 		userList = new JList(userListModel);
 		userList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		userList.setPrototypeCellValue("123456789012");
-
+	
 		JScrollPane scrollPane = new JScrollPane(userList);
 		JPanel panel = new JPanel();
 		panel.add(scrollPane);
@@ -131,8 +132,26 @@ public class GamePane extends JPanel {
 		tabbedPane.setEnabledAt(0,true);
 		tabbedPane.setEnabledAt(1,true);
 		chatLineText="quit";
+		
 		}
 
+	}
+	
+	public boolean isHost(){
+		
+		return host;
+	}
+	
+	public void setHost(){
+		
+		host = true;
+	}
+	public void quit(){
+		tabbedPane.setSelectedIndex(0);
+		tabbedPane.setEnabledAt(2,false);
+		tabbedPane.setEnabledAt(0,true);
+		tabbedPane.setEnabledAt(1,true);
+		chatLineText="quit";
 	}
 
 }

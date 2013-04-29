@@ -18,7 +18,7 @@ public class QuestionWriter extends Thread {
 
 		while (true) {
 			try {
-				Thread.sleep(5000);
+				Thread.sleep(20000);
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
@@ -30,7 +30,7 @@ public class QuestionWriter extends Thread {
 				q += ques;
 				qbox.setContent(q);
 				try {
-					Thread.sleep(5000);
+					Thread.sleep(10000);
 				} catch (InterruptedException e) {
 					e.printStackTrace();
 				}

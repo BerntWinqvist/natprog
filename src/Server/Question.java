@@ -35,7 +35,7 @@ public class Question {
 	
 	public int getPoints(){
 		long elapsed = System.currentTimeMillis() - startTime;
-		return (int) (50 - elapsed/100);
+		return (int) (100 - elapsed/100);
 	}
 	
 	private void fillQuestion(){

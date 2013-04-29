@@ -51,7 +51,11 @@ public class ClientSendThread extends Thread {
 				}
 				if (str.compareTo("quit") == 0) {
 					quit = true;
-					
+					if(gp.isHost()){
+						
+						out.println("quithost");
+						
+					}
 				}
 			}
 

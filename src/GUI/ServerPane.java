@@ -146,6 +146,7 @@ public class ServerPane extends JPanel {
 						(JPanel) tabbedPane.getComponentAt(2));			
 
 				((GamePane)	tabbedPane.getComponentAt(2)).setUserName(name);
+				((GamePane)	tabbedPane.getComponentAt(2)).setHost();
 
 			} catch (Exception e) {
 				e.printStackTrace();		

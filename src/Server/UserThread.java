@@ -35,7 +35,9 @@ public class UserThread extends Thread {
 			users.add(user);
 			box.setContent("%%%%%%"+userName);
 			for(int i = 0; i<users.size();i++){
+				if(users.get(i).getId()!=user.getId()){
 				out.println("%%%%%%" + users.get(i).getName());
+				}
 			}
 			boolean quit = false;
 			// skicka meddelande
@@ -52,9 +54,8 @@ public class UserThread extends Thread {
 
 						}
 
-					} else if (s.startsWith("E ")) {
-						out.println(s.substring(2));
-						out.flush();
+					} else if (s.startsWith("hostquit")) {
+						box.setContent("hostquit");
 					} else if (s.startsWith("M ")) {
 						box.setContent(s.substring(2));
 
