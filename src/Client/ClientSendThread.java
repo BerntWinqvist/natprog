@@ -37,8 +37,7 @@ public class ClientSendThread extends Thread {
 			String str = gp.scanNextLine();
 
 			
-				if (str.compareTo("§")!=0) {			//jag vill ha null här egentligen
-				System.out.println("titta här");
+				if (str.compareTo("§§§§§§§§§§")!=0) {			
 				try {
 					if (!out.checkError()) {
 						out.println(str);

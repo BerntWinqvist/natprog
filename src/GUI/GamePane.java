@@ -92,7 +92,7 @@ public class GamePane extends JPanel {
 	}
 	public String scanNextLine(){
 		if(chatLineText.isEmpty()){
-			return "§";				//jag vill ha null här egentligen
+			return "§§§§§§§§§§";				
 			
 		}else{
 			String temp = chatLineText;
@@ -107,6 +107,7 @@ public class GamePane extends JPanel {
 
 		public void actionPerformed(ActionEvent event) {
 			chatLineText = chatLine.getText();
+			chatLine.setText("");
 		}
 
 	}

@@ -23,10 +23,11 @@ public class QuestionWriter extends Thread {
 				e.printStackTrace();
 			}
 			qbox.setContent("NY RUNDA");
+			String ques = quest.getQuestion();
 			for (int i = 0; i < 5; i++) {
 				int temp = i + 1;
 				String q = "FRÅGA " + temp + ": ";
-				q += quest.getQuestion();
+				q += ques;
 				qbox.setContent(q);
 				try {
 					Thread.sleep(5000);
@@ -37,11 +38,13 @@ public class QuestionWriter extends Thread {
 				String a = "RÄTT SVAR: ";
 				a += quest.getAnswer();
 				qbox.setContent(a);
+				ques = quest.getQuestion();
 				try {
 					Thread.sleep(1000);
 				} catch (InterruptedException e) {
 					e.printStackTrace();
 				}
+				
 			}
 			qbox.setContent("RUNDAN ÄR AVSLUTAD");
 			qbox.setContent("RESULTAT:");
