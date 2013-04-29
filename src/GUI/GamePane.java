@@ -18,6 +18,7 @@ public class GamePane extends JPanel {
 	private DefaultListModel userListModel;
 	private String chatLineText;
 	private JLabel yourName;
+	private JLabel yourScore;
 
 	public GamePane() {
 
@@ -48,20 +49,20 @@ public class GamePane extends JPanel {
 
 		JLabel label = new JLabel("Connected users");
 		eastPanel.setLayout(new GridLayout(4, 0));
-		eastNorthPanel.add(label);
+		eastNorthPanel.setLayout(new BorderLayout());
+		eastNorthPanel.add(label, BorderLayout.NORTH);
 		JComponent list = createUserList();
-		eastNorthPanel.add(list);
+		eastNorthPanel.add(list, BorderLayout.CENTER);
 
 		eastPanel.add(eastNorthPanel);
 		yourName = new JLabel("Your user name: ");
-		
-		JLabel yourScore = new JLabel("Your score: ");
-		JLabel playerScore = new JLabel(""); //Hämta användarens poäng
+
+		yourScore = new JLabel("Your score: ");
 		JPanel bPanel = new JPanel();
 		eastPanel.add(yourName);
 		eastPanel.add(yourScore);
 		eastPanel.add(bPanel);
-		
+
 		JButton button = new JButton("Disconnect");
 		bPanel.add(button);
 		add(eastPanel);
@@ -105,10 +106,13 @@ public class GamePane extends JPanel {
 			return temp;
 		}
 	}
-	
-	public void setUserName(String userName){
-		
-		yourName.setText("<html>Your user name: <br/>" + userName +"</html>");
+
+	public void setUserName(String userName) {
+		yourName.setText("<html>Your user name: <br/>" + userName + "</html>");
+	}
+
+	public void setPoints(String points) {
+		yourScore.setText("<html>Your Score: <br/>" + points + "</html>");
 	}
 
 	class ActionHandler implements ActionListener {

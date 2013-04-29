@@ -27,8 +27,12 @@ public class ClientReceiveThread extends Thread {
 			while (true) {
 
 				String s;
-				while ((s = in.readLine()) != null) {					
-					gp.setChatText(s);
+				while ((s = in.readLine()) != null) {	
+					if(s.startsWith("&&&&&")){
+						gp.setPoints(s.substring(5));
+					}else{
+						gp.setChatText(s);
+					}
 				}
 			}
 

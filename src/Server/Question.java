@@ -50,6 +50,8 @@ public class Question {
 		quest.add("Vad är 17+16?");
 		quest.add("Vad heter prinsessan i Super Mario spelen?");
 		quest.add("Vad heter Trollkarlen i Sagan om rignen filmerna?");
+		quest.add("Hur många bokstäver finns det i alfabetet?");
+		quest.add("Vad heter företaget som har utvecklat bland annat World of Warcraft?");
 	}
 	private void fillAnswer(){
 		answer.add("10");
@@ -63,5 +65,7 @@ public class Question {
 		answer.add("33");
 		answer.add("Peach");
 		answer.add("Gandalf");
+		answer.add("29");
+		answer.add("Blizzard");
 	}
 }

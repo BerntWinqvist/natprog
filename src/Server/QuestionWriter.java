@@ -67,6 +67,10 @@ public class QuestionWriter extends Thread {
 					hPointsResult+= p;
 				}
 			}
+			for(int i=0; i<users.size();i++){
+				users.get(i).resetPoints();
+			}
+			
 			qbox.setContent("VINNAREN ÄR: " + hPointsResult);
 			qbox.setContent("NÄSTA RUNDA BÖRJAR OM 20S");
 

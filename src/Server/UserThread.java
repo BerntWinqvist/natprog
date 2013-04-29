@@ -41,7 +41,7 @@ public class UserThread extends Thread {
 				while ((s = in.readLine()) != null) {
 
 					if ((s.startsWith("quit"))) {
-						for (int i =0 ; i<users.size(); i++) {
+						for (int i = 0; i < users.size(); i++) {
 							if (users.get(i).getId() == id) {
 								users.remove(i);
 								quit = true;
@@ -60,6 +60,7 @@ public class UserThread extends Thread {
 							if (!user.hasAnswered()) {
 								out.println("DU SVARADE RÄTT");
 								user.addPoints(quest.getPoints());
+								out.println("&&&&&" + user.getPoints());
 								// System.out.println(user.getName() + " :" +
 								// user.getPoints());
 							} else {
