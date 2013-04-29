@@ -39,6 +39,7 @@ public class Server extends Thread {
 		qWrite.start();
 		qReader.start();
 		try {
+			boolean firstUser = true;
 			boolean serverRunning = true;
 			while (serverRunning) {
 				Socket clientSocket = serverSocket.accept();
@@ -46,9 +47,11 @@ public class Server extends Thread {
 						quest, id);
 				id++;
 				user.start();
-				if(users.isEmpty()){
+				if(users.isEmpty() && !firstUser){
 					serverRunning=false;
+					
 				}
+				firstUser=false;
 			
 			}
 
