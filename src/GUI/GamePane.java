@@ -19,11 +19,12 @@ public class GamePane extends JPanel {
 	private String chatLineText;
 	private JLabel yourName;
 	private JLabel yourScore;
+	private JTabbedPane tabbedPane;
 
-	public GamePane() {
+	public GamePane(JTabbedPane tabbedPane) {
 
 		chatLineText = "";
-
+		this.tabbedPane = tabbedPane;
 		setLayout(new BorderLayout());
 		JPanel chatPane = new JPanel(new BorderLayout());
 		chatText = new JTextArea(20, 50);
@@ -64,6 +65,7 @@ public class GamePane extends JPanel {
 		eastPanel.add(bPanel);
 
 		JButton button = new JButton("Disconnect");
+		button.addActionListener(new ActionHandler2());
 		bPanel.add(button);
 		add(eastPanel);
 		getUser();
@@ -120,6 +122,22 @@ public class GamePane extends JPanel {
 		public void actionPerformed(ActionEvent event) {
 			chatLineText = chatLine.getText();
 			chatLine.setText("");
+		}
+
+	}
+	
+	class ActionHandler2 implements ActionListener {
+
+		public void actionPerformed(ActionEvent event) {
+		tabbedPane.setSelectedIndex(0);
+		tabbedPane.setEnabledAt(2,false);
+		tabbedPane.setEnabledAt(0,true);
+		tabbedPane.setEnabledAt(1,true);
+
+
+
+
+		chatLineText="quit";
 		}
 
 	}

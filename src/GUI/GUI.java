@@ -19,10 +19,12 @@ private JTabbedPane tabbedPane;
 		ServerPane sp = new ServerPane(tabbedPane);
 		tabbedPane.addTab("Serverpane",sp);
 		
-		GamePane gp = new GamePane();
+		GamePane gp = new GamePane(tabbedPane);
 		tabbedPane.addTab("GamePane", gp);
 		
 		tabbedPane.setSelectedIndex(0);
+		tabbedPane.setEnabledAt(2,false);
+
 		frame.getContentPane().add(tabbedPane, BorderLayout.CENTER);
 
 		frame.setSize(700, 500);

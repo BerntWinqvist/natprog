@@ -198,6 +198,8 @@ public class StartPane extends JPanel {
 			String host = getHost();
 			if(host != null && !userName.equals("")) {
 				tabbedPane.setEnabledAt(0,false);
+				tabbedPane.setEnabledAt(2,true);
+
 				tabbedPane.setSelectedIndex(2);
 				Client client = new Client(host, userName,
 						(JPanel) tabbedPane.getComponentAt(2));

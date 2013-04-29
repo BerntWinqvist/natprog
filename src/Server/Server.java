@@ -39,12 +39,17 @@ public class Server extends Thread {
 		qWrite.start();
 		qReader.start();
 		try {
-			while (true) {
+			boolean serverRunning = true;
+			while (serverRunning) {
 				Socket clientSocket = serverSocket.accept();
 				UserThread user = new UserThread(clientSocket, users, box,
 						quest, id);
 				id++;
 				user.start();
+				if(users.isEmpty()){
+					serverRunning=false;
+				}
+			
 			}
 
 		} catch (IOException e) {

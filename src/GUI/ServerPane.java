@@ -138,6 +138,7 @@ public class ServerPane extends JPanel {
 				serv.start();
 				tabbedPane.setEnabledAt(0,false);
 				tabbedPane.setEnabledAt(1,false);
+				tabbedPane.setEnabledAt(2,true);
 				tabbedPane.setSelectedIndex(2);
 				status.setText("Server running");
 				emptyLabel.setText("");
