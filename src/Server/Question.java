@@ -52,6 +52,36 @@ public class Question {
 		quest.add("Vad heter Trollkarlen i Sagan om rignen filmerna?");
 		quest.add("Hur många bokstäver finns det i alfabetet?");
 		quest.add("Vad heter företaget som har utvecklat bland annat World of Warcraft?");
+		quest.add("Vad heter Facebooks grundare?");
+		quest.add("Vad är tredje roten av 27?");
+		quest.add("Vilket år skönk Titanic?");
+		quest.add("Vilken är kurskoden för Nätverksprogrammering?");
+		quest.add("Vem är upphovsmannen till kärnan i Linux?");
+		quest.add("Vad heter Sveriges högsta berg?");
+		quest.add("Vid vilken temperatur (Celsius) är vatten som tyngst?");
+		quest.add("Vad dricker kon?");
+		quest.add("Vad heter huvudstaden i USA?");
+		quest.add("Vilken är världens folkrikaste stad?");
+		quest.add("Vem har regisserat Sagan om Ringen-trilogin?");
+		quest.add("Vad nickade Sveriges genom tiderna mest berömda Counter-Strike-spelare?");
+		quest.add("Vad är titeln på den låt som fått mest views på Youtube?");
+		quest.add("Från vilket land kommer skaparna av Angry Birds?");
+		quest.add("Vad heter Googles berömda hvuudkontor?");
+		quest.add("Vilken knapp sitter längst ned i vänstra hörnet på ett QWERTY-tangentbord?");
+		quest.add("Hur många Shift-tangenter finns det på ett QWERTY-tangentbord?");
+		quest.add("I vilket programmeringsspråk är detta program skrivet?");
+		quest.add("Förstår du apelsin?");
+		quest.add("Hur många kanter har en hexagon?");
+		quest.add("Vad heter Windows tablet-modell?");
+		quest.add("Vad heter huvudstaden i Luxemburg?");
+		quest.add("Översätt den finska frasen Ei saa peittää");
+		quest.add("Vem gjorde låten Millennium 2?");
+		quest.add("I hur många år kan en snigel sova?");
+		quest.add("Vem utbrister BOOM när han lyckas lösa en matteuppgift?");
+		quest.add("Hur många poäng är en civilingenjörsutbildning?");
+		quest.add("Hur många kort finns det i en kortlek med 3 jokrar?");
+		quest.add("Vad heter redskapet du lyfter i bänkpress?");
+		quest.add("Vilket näringsämne är uppbyggt av aminosyror?");
 	}
 	private void fillAnswer(){
 		answer.add("10");
@@ -67,5 +97,37 @@ public class Question {
 		answer.add("Gandalf");
 		answer.add("29");
 		answer.add("Blizzard");
+		answer.add("Mark Zuckerberg");
+		answer.add("3");
+		answer.add("1912");
+		answer.add("EDA095");
+		answer.add("Linus Torvalds");
+		answer.add("Kebnekaise");
+		answer.add("4");
+		answer.add("Vatten");
+		answer.add("Washington DC");
+		answer.add("Tokyo");
+		answer.add("Peter Jackson");
+		answer.add("HeatoN");
+		answer.add("Gangnam Style");
+		answer.add("Finland");
+		answer.add("GooglePlex");
+		answer.add("Ctrl");
+		answer.add("2");
+		answer.add("Java");
+		answer.add("Ja");
+		answer.add("6");
+		answer.add("Surface");
+		answer.add("Luxemburg");
+		answer.add("Får ej övertäckas");
+		answer.add("Markoolio");
+		answer.add("3");
+		answer.add("Mergim");
+		answer.add("300");
+		answer.add("55");
+		answer.add("Skivstång");
+		answer.add("Protein");
+		
+		
 	}
 }
