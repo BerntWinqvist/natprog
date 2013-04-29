@@ -201,7 +201,7 @@ public class StartPane extends JPanel {
 				tabbedPane.setSelectedIndex(2);
 				Client client = new Client(host, userName,
 						(JPanel) tabbedPane.getComponentAt(2));
-				
+			((GamePane)	tabbedPane.getComponentAt(2)).setUserName(userName);
 
 			}else{
 				JOptionPane dialog = new JOptionPane();

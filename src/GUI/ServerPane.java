@@ -2,6 +2,7 @@ package GUI;
 
 import javax.swing.*;
 
+import Client.Client;
 import Server.Server;
 
 import java.awt.*;
@@ -48,7 +49,7 @@ public class ServerPane extends JPanel {
 		c.gridy = 1;
 		add(comp, c);
 
-		comp = inputPane("User name");
+		comp = inputPane("User name  ");
 		c.fill = GridBagConstraints.HORIZONTAL;
 		c.weightx = 20;
 		c.weighty = 1;
@@ -86,15 +87,6 @@ public class ServerPane extends JPanel {
 		c.gridwidth = 1;
 		add(emptyLabel, c);
 		
-		JButton stopButton = new JButton("Stop Server");
-		c.fill = GridBagConstraints.HORIZONTAL;
-		c.weightx = 0;
-		c.weighty = 0.5;
-		c.gridx = 2;
-		c.gridwidth = 1;
-		c.gridy = 4;
-		stopButton.addActionListener(new ActionHandler());
-		add(stopButton, c);
 		
 		
 		
@@ -138,17 +130,27 @@ public class ServerPane extends JPanel {
 
 			String name = fields[1].getText();
 			String serverName = fields[0].getText();
+			
+			if(!serverName.equals("Server name") && !serverName.equals("") && !name.equals("User name  ") && !name.equals("")){
 
 			try {				
 				Server serv = new Server(serverName);
 				serv.start();
-//				tabbedPane.setSelectedIndex(2);
+				tabbedPane.setEnabledAt(0,false);
+				tabbedPane.setEnabledAt(1,false);
+				tabbedPane.setSelectedIndex(2);
 				status.setText("Server running");
 				emptyLabel.setText("");
+				Client client = new Client("localhost", name,
+						(JPanel) tabbedPane.getComponentAt(2));			
+				((GamePane)	tabbedPane.getComponentAt(2)).setUserName(name);
 			} catch (Exception e) {
-				e.printStackTrace();
-		
+				e.printStackTrace();		
 
+			}}else{
+				JOptionPane dialog = new JOptionPane();
+				dialog.showMessageDialog(null,"Must choose a server name and/or a username");
+				
 			}
 
 		}
