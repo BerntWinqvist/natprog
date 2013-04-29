@@ -143,11 +143,9 @@ public class ServerPane extends JPanel {
 				emptyLabel.setText("");
 				Client client = new Client("localhost", name,
 						(JPanel) tabbedPane.getComponentAt(2));			
-<<<<<<< HEAD
+
 				((GamePane)	tabbedPane.getComponentAt(2)).setUserName(name);
-=======
-				
->>>>>>> refs/remotes/origin/master
+
 			} catch (Exception e) {
 				e.printStackTrace();		
 
