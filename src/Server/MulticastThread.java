@@ -7,6 +7,7 @@ import java.net.MulticastSocket;
 public class MulticastThread extends Thread {
 	private String serverName;
 	private boolean isAlive;
+	private MulticastSocket ms;
 	public MulticastThread(String serverName) {
 		this.serverName = serverName;
 		isAlive = true;
@@ -15,7 +16,7 @@ public class MulticastThread extends Thread {
 	public void run() {
 		try {
 
-			MulticastSocket ms = new MulticastSocket(4099);
+			 ms = new MulticastSocket(4099);
 			InetAddress inetaddr = InetAddress.getByName("experiment.mcast.net");
 			ms.joinGroup(inetaddr);
 
@@ -41,6 +42,8 @@ public class MulticastThread extends Thread {
 	
 	public void kill(){
 		isAlive = false;
+		ms.close();
+		
 	}
 
 }

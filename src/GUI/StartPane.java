@@ -208,7 +208,7 @@ public class StartPane extends JPanel {
 				Client client = new Client(host, userName,
 						(JPanel) tabbedPane.getComponentAt(2));
 			((GamePane)	tabbedPane.getComponentAt(2)).setUserName(userName);
-
+			serverListModel.clear();
 			}else{
 				JOptionPane dialog = new JOptionPane();
 				dialog.showMessageDialog(null,"Must choose a server and/or a username");
@@ -220,7 +220,7 @@ public class StartPane extends JPanel {
 	class ActionHandler2 implements ActionListener {
 
 		@Override
-		// När man trycker på Connect, här defineras vad som händer.
+		
 		public void actionPerformed(ActionEvent event) {
 			getServers();
 
