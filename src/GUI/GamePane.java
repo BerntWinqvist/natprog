@@ -139,11 +139,16 @@ public class GamePane extends JPanel {
 		tabbedPane.setEnabledAt(2,true);
 		tabbedPane.setEnabledAt(0,true);
 		tabbedPane.setEnabledAt(1,true);
-		chatLineText="quit";
 		userListModel.clear();
 		setPoints("0");
-//		((ServerPane) tabbedPane.getComponentAt(1)).stopServer();
+		
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		if(isHost()){
+			chatLineText="hostquit";
+//			((ServerPane) tabbedPane.getComponentAt(1)).stopServer();
+		}else{
+			chatLineText="quit";
+		}
 		
 		}
 
@@ -158,7 +163,7 @@ public class GamePane extends JPanel {
 		
 		host = true;
 	}
-	public void quit(){	// detta fungerar inte.......
+	public void quit(){	
 		tabbedPane.setSelectedIndex(0);
 		tabbedPane.setEnabledAt(2,true);
 		tabbedPane.setEnabledAt(0,true);

@@ -55,7 +55,7 @@ public class UserThread extends Thread {
 
 						}
 
-					} else if (s.startsWith("hostquit")) {	// detta funkar inte.....
+					} else if (s.startsWith("hostquit")) {	
 						box.setContent("hostquit");
 					} else if (s.startsWith("M ") || (s.startsWith("m "))) {
 						
