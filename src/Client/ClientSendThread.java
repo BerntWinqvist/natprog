@@ -45,6 +45,7 @@ public class ClientSendThread extends Thread {
 					} else {
 						System.out.println("Connection closed");
 						quit = true;
+						
 					}
 				} catch (Exception e1) {
 					e1.printStackTrace();

@@ -86,10 +86,14 @@ public class GamePane extends JPanel {
 	}
 
 	// Metod för att fylla listan med inloggade users
-	public void setUser(String user) {
-			userListModel.addElement(user);
+	public void setUser(String userName) {
+			userListModel.addElement(userName);
 	}
 
+	public void removeUser(String userName){
+		userListModel.removeElement(userName);
+	}
+	
 	public void setChatText(String s) {
 		chatText.append(s + "\n");
 		chatText.setCaretPosition(chatText.getText().length());
@@ -110,6 +114,7 @@ public class GamePane extends JPanel {
 	public void setUserName(String userName) {
 		yourName.setText("<html>Your user name: <br/>" + userName + "</html>");
 	}
+	
 
 	public void setPoints(String points) {
 		yourScore.setText("<html>Your Score: <br/>" + points + "</html>");
@@ -128,10 +133,12 @@ public class GamePane extends JPanel {
 
 		public void actionPerformed(ActionEvent event) {
 		tabbedPane.setSelectedIndex(0);
-		tabbedPane.setEnabledAt(2,false);
+		tabbedPane.setEnabledAt(2,true);
 		tabbedPane.setEnabledAt(0,true);
 		tabbedPane.setEnabledAt(1,true);
 		chatLineText="quit";
+		userList.removeAll();
+		((ServerPane) tabbedPane.getComponentAt(1)).stopServer();
 		
 		}
 
@@ -146,9 +153,9 @@ public class GamePane extends JPanel {
 		
 		host = true;
 	}
-	public void quit(){
+	public void quit(){	// detta fungerar inte.......
 		tabbedPane.setSelectedIndex(0);
-		tabbedPane.setEnabledAt(2,false);
+		tabbedPane.setEnabledAt(2,true);
 		tabbedPane.setEnabledAt(0,true);
 		tabbedPane.setEnabledAt(1,true);
 		chatLineText="quit";

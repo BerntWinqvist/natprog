@@ -47,12 +47,13 @@ public class Server extends Thread {
 						quest, id);
 				id++;
 				user.start();
+				System.out.println(users.isEmpty());
 				if(users.isEmpty() && !firstUser){
-					serverRunning=false;					
+					serverRunning=false;
 				}
 				firstUser=false;
-			
 			}
+			
 
 		} catch (IOException e) {
 

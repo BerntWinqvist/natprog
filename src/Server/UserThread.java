@@ -49,15 +49,17 @@ public class UserThread extends Thread {
 						for (int i = 0; i < users.size(); i++) {
 							if (users.get(i).getId() == id) {
 								users.remove(i);
+								box.setContent("¤dropped" + userName);
 								quit = true;
 							}
 
 						}
 
-					} else if (s.startsWith("hostquit")) {
+					} else if (s.startsWith("hostquit")) {	// detta funkar inte.....
 						box.setContent("hostquit");
-					} else if (s.startsWith("M ")) {
-						box.setContent(s.substring(2));
+					} else if (s.startsWith("M ") || (s.startsWith("m "))) {
+						
+						box.setContent(user.getName()+": "+s.substring(2));
 
 					} else {
 						if (quest.isCorrect(s)) {

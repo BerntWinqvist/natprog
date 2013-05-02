@@ -17,6 +17,7 @@ public class ServerPane extends JPanel {
 	private JLabel emptyLabel;
 	private int i;
 	private JTabbedPane tabbedPane;
+	private Server serv;
 
 	public ServerPane(JTabbedPane tabbedPane) { 
 		i=0;
@@ -134,8 +135,9 @@ public class ServerPane extends JPanel {
 			if(!serverName.equals("Server name") && !serverName.equals("") && !name.equals("User name  ") && !name.equals("")){
 
 			try {				
-				Server serv = new Server(serverName);
+				serv = new Server(serverName);
 				serv.start();
+				
 				tabbedPane.setEnabledAt(0,false);
 				tabbedPane.setEnabledAt(1,false);
 				tabbedPane.setEnabledAt(2,true);
@@ -159,6 +161,12 @@ public class ServerPane extends JPanel {
 
 		}
 
+	}
+	
+	public void stopServer(){
+		
+		
+		
 	}
 
 }
