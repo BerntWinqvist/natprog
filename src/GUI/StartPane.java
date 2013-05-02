@@ -27,8 +27,10 @@ public class StartPane extends JPanel {
 	private JTabbedPane tabbedPane;
 	private String address;
 	private HashMap<String, String> servers;
+	private JFrame frame;
 
-	public StartPane(JTabbedPane tabbedPane) {
+	public StartPane(JTabbedPane tabbedPane, JFrame frame) {
+		this.frame=frame;
 		this.tabbedPane = tabbedPane;
 		layout = new GridBagLayout();
 		c = new GridBagConstraints();
@@ -196,7 +198,9 @@ public class StartPane extends JPanel {
 		public void actionPerformed(ActionEvent event) {
 			String userName = field.getText();
 			String host = getHost();
+			
 			if(host != null && !userName.equals("")) {
+				frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 				tabbedPane.setEnabledAt(0,false);
 				tabbedPane.setEnabledAt(2,true);
 

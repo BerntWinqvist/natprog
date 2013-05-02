@@ -21,8 +21,10 @@ public class GamePane extends JPanel {
 	private JLabel yourScore;
 	private JTabbedPane tabbedPane;
 	private boolean host;
-
-	public GamePane(JTabbedPane tabbedPane) {
+	private JFrame frame;
+	
+	public GamePane(JTabbedPane tabbedPane, JFrame frame) {
+		this.frame=frame;
 		host = false;
 		chatLineText = "";
 		this.tabbedPane = tabbedPane;
@@ -69,6 +71,7 @@ public class GamePane extends JPanel {
 		button.addActionListener(new ActionHandler2());
 		bPanel.add(button);
 		add(eastPanel);
+		
 
 	}
 
@@ -137,8 +140,10 @@ public class GamePane extends JPanel {
 		tabbedPane.setEnabledAt(0,true);
 		tabbedPane.setEnabledAt(1,true);
 		chatLineText="quit";
-		userList.removeAll();
-		((ServerPane) tabbedPane.getComponentAt(1)).stopServer();
+		userListModel.clear();
+		setPoints("0");
+//		((ServerPane) tabbedPane.getComponentAt(1)).stopServer();
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		}
 

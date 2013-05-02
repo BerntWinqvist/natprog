@@ -13,13 +13,13 @@ private JTabbedPane tabbedPane;
 		//Tabbarna
 		tabbedPane = new JTabbedPane();
 		
-		StartPane sf = new StartPane(tabbedPane);	
+		StartPane sf = new StartPane(tabbedPane, frame);	
 		tabbedPane.addTab("Startpane", sf);
 		
-		ServerPane sp = new ServerPane(tabbedPane);
+		ServerPane sp = new ServerPane(tabbedPane,frame);
 		tabbedPane.addTab("Serverpane",sp);
 		
-		GamePane gp = new GamePane(tabbedPane);
+		GamePane gp = new GamePane(tabbedPane,frame);
 		tabbedPane.addTab("GamePane", gp);
 		
 		tabbedPane.setSelectedIndex(0);
@@ -31,6 +31,7 @@ private JTabbedPane tabbedPane;
 		frame.setVisible(true);
 		frame.setLocationRelativeTo(null);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
 		
 		
 	}

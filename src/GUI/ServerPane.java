@@ -18,9 +18,11 @@ public class ServerPane extends JPanel {
 	private int i;
 	private JTabbedPane tabbedPane;
 	private Server serv;
+	private JFrame frame;
 
-	public ServerPane(JTabbedPane tabbedPane) { 
+	public ServerPane(JTabbedPane tabbedPane, JFrame frame) { 
 		i=0;
+		this.frame=frame;
 		this.tabbedPane = tabbedPane;
 		fields = new JTextField[2];
 		GridBagLayout layout = new GridBagLayout();
@@ -149,6 +151,7 @@ public class ServerPane extends JPanel {
 
 				((GamePane)	tabbedPane.getComponentAt(2)).setUserName(name);
 				((GamePane)	tabbedPane.getComponentAt(2)).setHost();
+				frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 
 			} catch (Exception e) {
 				e.printStackTrace();		
