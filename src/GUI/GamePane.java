@@ -136,7 +136,7 @@ public class GamePane extends JPanel {
 
 		public void actionPerformed(ActionEvent event) {
 		tabbedPane.setSelectedIndex(0);
-		tabbedPane.setEnabledAt(2,true);
+		tabbedPane.setEnabledAt(2,false);
 		tabbedPane.setEnabledAt(0,true);
 		tabbedPane.setEnabledAt(1,true);
 		userListModel.clear();
@@ -165,10 +165,11 @@ public class GamePane extends JPanel {
 	}
 	public void quit(){	
 		tabbedPane.setSelectedIndex(0);
-		tabbedPane.setEnabledAt(2,true);
+		tabbedPane.setEnabledAt(2,false);
 		tabbedPane.setEnabledAt(0,true);
 		tabbedPane.setEnabledAt(1,true);
 		chatLineText="quit";
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
 
 }

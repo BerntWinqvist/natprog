@@ -35,7 +35,7 @@ public class MulticastThread extends Thread {
 			}
 
 		} catch (Exception e) {
-			e.printStackTrace();
+			
 
 		}
 	}

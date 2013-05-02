@@ -72,7 +72,7 @@ public class ServerPane extends JPanel {
 		button.addActionListener(new ActionHandler());
 		add(button, c);
 
-		status = new JLabel("Server not running");
+		status = new JLabel("");
 		c.fill = GridBagConstraints.HORIZONTAL;
 		c.weightx = 20;
 		c.weighty = 1;
@@ -144,7 +144,6 @@ public class ServerPane extends JPanel {
 				tabbedPane.setEnabledAt(1,false);
 				tabbedPane.setEnabledAt(2,true);
 				tabbedPane.setSelectedIndex(2);
-				status.setText("Server running");
 				emptyLabel.setText("");
 				Client client = new Client("localhost", name,
 						(JPanel) tabbedPane.getComponentAt(2));			

@@ -23,7 +23,7 @@ public class StartPane extends JPanel {
 	private JTextField field;
 	private GridBagLayout layout;
 	private GridBagConstraints c;
-	private String selectedServer; // Här läggs vald server från JListan'
+	private String selectedServer; 
 	private JTabbedPane tabbedPane;
 	private String address;
 	private HashMap<String, String> servers;
@@ -202,6 +202,7 @@ public class StartPane extends JPanel {
 			if(host != null && !userName.equals("")) {
 				frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 				tabbedPane.setEnabledAt(0,false);
+				tabbedPane.setEnabledAt(1,false);
 				tabbedPane.setEnabledAt(2,true);
 
 				tabbedPane.setSelectedIndex(2);

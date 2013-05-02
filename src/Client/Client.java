@@ -24,17 +24,19 @@ public class Client {
 			if (socket.isConnected()) {
 				System.out.println("Connected to the server");
 				OutputStream out = socket.getOutputStream();
-				String name = userName + "\n";					//ska komma som input från gui sen
+				String name = userName + "\n";					
 				out.write(name.getBytes());
+				ClientSendThread send = new ClientSendThread("Send-thread",socket,gp);
+				ClientReceiveThread receive = new ClientReceiveThread("Receive-Thread",socket,gp);
+				send.start();
+				receive.start();
 			}
 			
 		} catch (IOException e) {
-			e.printStackTrace();
+			JOptionPane dialog = new JOptionPane();
+			dialog.showMessageDialog(null,"The server is not longer running");
 		}
-		ClientSendThread send = new ClientSendThread("Send-thread",socket,gp);
-		ClientReceiveThread receive = new ClientReceiveThread("Receive-Thread",socket,gp);
-		send.start();
-		receive.start();
+		
 	
 	}
 	
