@@ -6,8 +6,10 @@ import java.net.MulticastSocket;
 
 public class MulticastThread extends Thread {
 	private String serverName;
+	private boolean isAlive;
 	public MulticastThread(String serverName) {
 		this.serverName = serverName;
+		isAlive = true;
 	}
 
 	public void run() {
@@ -17,7 +19,7 @@ public class MulticastThread extends Thread {
 			InetAddress inetaddr = InetAddress.getByName("experiment.mcast.net");
 			ms.joinGroup(inetaddr);
 
-			while (true) {
+			while (isAlive) {
 				byte[] receive = new byte[100];
 				DatagramPacket dprec = new DatagramPacket(receive, receive.length);
 				ms.receive(dprec);
@@ -35,6 +37,10 @@ public class MulticastThread extends Thread {
 			e.printStackTrace();
 
 		}
+	}
+	
+	public void kill(){
+		isAlive = false;
 	}
 
 }

@@ -8,17 +8,19 @@ public class MailboxReader extends Thread {
 	private Mailbox box;
 	private Vector<User> users;
 	private OutputStream out;
+	private boolean isAlive;
 	
 	public MailboxReader(Vector<User> users,Mailbox box){
 		this.users = users;
 		this.box=box;
+		isAlive = true;
 		
 	}
 	
 	public void run(){
 		
 		String s; 
-		while(true){
+		while(isAlive){
 		s=box.getContent() +"\n";
 		byte[] b = s.getBytes();
 		try{
@@ -31,6 +33,10 @@ public class MailboxReader extends Thread {
 		}
 		}
 		
+	}
+
+	public void kill() {
+		isAlive = false;
 	}
 	
 	

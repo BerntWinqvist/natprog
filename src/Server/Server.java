@@ -56,10 +56,20 @@ public class Server extends Thread {
 			
 
 		} catch (IOException e) {
-
-			e.printStackTrace();
+			MT.kill();
+			mReader.kill();
+			qWrite.kill();
+			qReader.kill();
 		}
 
+	}
+	
+	public void stopServer(){
+		try {
+			serverSocket.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}		
 	}
 
 }

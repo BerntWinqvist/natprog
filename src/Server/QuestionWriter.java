@@ -6,17 +6,19 @@ public class QuestionWriter extends Thread {
 	private QuestionMailbox qbox;
 	private Question quest;
 	private Vector<User> users;
+	private boolean isAlive;
 
 	public QuestionWriter(QuestionMailbox qbox, Question quest,
 			Vector<User> users) {
 		this.qbox = qbox;
 		this.quest = quest;
 		this.users = users;
+		isAlive = true;
 	}
 
 	public void run() {
 
-		while (true) {
+		while (isAlive) {
 			try {
 				Thread.sleep(20000);
 			} catch (InterruptedException e) {
@@ -75,5 +77,10 @@ public class QuestionWriter extends Thread {
 			qbox.setContent("NÄSTA RUNDA BÖRJAR OM 20S");
 
 		}
+	}
+
+	public void kill() {
+		isAlive = false;
+		
 	}
 }

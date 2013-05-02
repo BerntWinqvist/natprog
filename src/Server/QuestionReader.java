@@ -7,17 +7,18 @@ public class QuestionReader extends Thread {
 	private QuestionMailbox qBox;
 	private Vector<User> users;
 	private OutputStream out;
-
+	private boolean isAlive;
 	public QuestionReader(Vector<User> users, QuestionMailbox qBox) {
 		this.users = users;
 		this.qBox = qBox;
+		isAlive = true;
 
 	}
 
 	public void run() {
 
 		String s;
-		while (true) {
+		while (isAlive) {
 			s = qBox.getContent() + "\n";
 			byte[] b = s.getBytes();
 			try {
@@ -31,6 +32,11 @@ public class QuestionReader extends Thread {
 			}
 		}
 
+	}
+
+	public void kill() {
+		isAlive = false;
+		
 	}
 
 }

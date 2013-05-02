@@ -167,7 +167,7 @@ public class ServerPane extends JPanel {
 	}
 	
 	public void stopServer(){
-		
+		serv.stopServer();
 		
 		
 	}

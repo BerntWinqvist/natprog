@@ -145,7 +145,7 @@ public class GamePane extends JPanel {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		if(isHost()){
 			chatLineText="hostquit";
-//			((ServerPane) tabbedPane.getComponentAt(1)).stopServer();
+			((ServerPane) tabbedPane.getComponentAt(1)).stopServer();
 		}else{
 			chatLineText="quit";
 		}
