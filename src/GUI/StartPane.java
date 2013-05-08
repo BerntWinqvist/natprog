@@ -204,7 +204,6 @@ public class StartPane extends JPanel {
 				tabbedPane.setEnabledAt(0,false);
 				tabbedPane.setEnabledAt(1,false);
 				tabbedPane.setEnabledAt(2,true);
-
 				tabbedPane.setSelectedIndex(2);
 				Client client = new Client(host, userName,
 						(JPanel) tabbedPane.getComponentAt(2));

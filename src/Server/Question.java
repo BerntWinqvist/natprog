@@ -82,6 +82,22 @@ public class Question {
 		quest.add("Hur många kort finns det i en kortlek med 3 jokrar?");
 		quest.add("Vad heter redskapet du lyfter i bänkpress?");
 		quest.add("Vilket näringsämne är uppbyggt av aminosyror?");
+		quest.add("I vilken stad skedde händelsen som utlöste Första Världskriget?");
+		quest.add("I vilket land föddes Hitler?");
+		quest.add("När, enligt USA startades Andra Världskriget?");
+		quest.add("Vilket datum kröntes Gustav Vasa 1523? (YYMMDD)");
+		quest.add("Vad hette typen av soldater som användes flitigt runt Carl XII:s tid?");
+		quest.add("Ungefär hur många älgar skjuts det varje år i Sverige?");
+		quest.add("Vilket år blev Skåne Svenskt?");
+		quest.add("Vad blir sin(PI / 2)");
+		quest.add("Var i Göteborg köper man fesk?");
+		quest.add("Can you do it now?");
+		quest.add("Can you do it on the examen?");
+		quest.add("Vem har gjort hitlåten bajs i bastun?");
+		quest.add("Vem har huvudrollen i Terminator filmerna?");
+		quest.add("Vad heter den stora bergodalbanan i trä på Liseberg?");
+		quest.add("Vilken gud står som staty högst up på avenyn i Göteborg?");
+	
 	}
 	private void fillAnswer(){
 		answer.add("10");
@@ -127,6 +143,21 @@ public class Question {
 		answer.add("55");
 		answer.add("Skivstång");
 		answer.add("Protein");
+		answer.add("Sarajevo");
+		answer.add("Österrike");
+		answer.add("1942");
+		answer.add("230606");
+		answer.add("Karoliner");
+		answer.add("100000");
+		answer.add("1658");
+		answer.add("1");
+		answer.add("Feskekyrkan");
+		answer.add("no");
+		answer.add("yes");
+		answer.add("Tunnan och Moroten");
+		answer.add("Arnold schwarzenegger");
+		answer.add("Balder");
+		answer.add("Poseidon");
 		
 		
 	}

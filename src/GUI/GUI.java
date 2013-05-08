@@ -14,13 +14,13 @@ private JTabbedPane tabbedPane;
 		tabbedPane = new JTabbedPane();
 		
 		StartPane sf = new StartPane(tabbedPane, frame);	
-		tabbedPane.addTab("Startpane", sf);
+		tabbedPane.addTab("Join game", sf);
 		
 		ServerPane sp = new ServerPane(tabbedPane,frame);
-		tabbedPane.addTab("Serverpane",sp);
+		tabbedPane.addTab("Create game",sp);
 		
 		GamePane gp = new GamePane(tabbedPane,frame);
-		tabbedPane.addTab("GamePane", gp);
+		tabbedPane.addTab("Current game", gp);
 		
 		tabbedPane.setSelectedIndex(0);
 		tabbedPane.setEnabledAt(2,false);
