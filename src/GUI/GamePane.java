@@ -33,7 +33,7 @@ public class GamePane extends JPanel {
 		chatText = new JTextArea(20, 50);
 		chatText.setLineWrap(true);
 		chatText.setEditable(false);
-		chatText.setForeground(Color.blue);
+		chatText.setForeground(Color.BLACK);
 		JScrollPane chatTextPane = new JScrollPane(chatText,
 				JScrollPane.VERTICAL_SCROLLBAR_ALWAYS,
 				JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
@@ -141,6 +141,7 @@ public class GamePane extends JPanel {
 		tabbedPane.setEnabledAt(1,true);
 		userListModel.clear();
 		setPoints("0");
+		chatText.setText("");
 		
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		if(isHost()){
@@ -164,6 +165,7 @@ public class GamePane extends JPanel {
 		host = true;
 	}
 	public void quit(){	
+		chatText.setText("");
 		tabbedPane.setSelectedIndex(0);
 		tabbedPane.setEnabledAt(2,false);
 		tabbedPane.setEnabledAt(0,true);

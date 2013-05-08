@@ -20,15 +20,23 @@ public class QuestionWriter extends Thread {
 
 		while (isAlive) {
 			try {
-				Thread.sleep(20000);
+				Thread.sleep(15000);
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
-			qbox.setContent("NY RUNDA");
+			qbox.setContent("\n Nästa runda börjar om 5s");
+			try {
+				Thread.sleep(5000);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+			
+			
+			qbox.setContent("\n"+"Ny runda" +"\n");
 			String ques = quest.getQuestion();
 			for (int i = 0; i < 5; i++) {
 				int temp = i + 1;
-				String q = "FRÅGA " + temp + ": ";
+				String q = "Fråga " + temp + ": ";
 				q += ques;
 				qbox.setContent(q);
 				try {
@@ -37,7 +45,7 @@ public class QuestionWriter extends Thread {
 					e.printStackTrace();
 				}
 
-				String a = "RÄTT SVAR: ";
+				String a = "Rätt svar: ";
 				a += quest.getAnswer();
 				qbox.setContent(a);
 				ques = quest.getQuestion();
@@ -48,8 +56,8 @@ public class QuestionWriter extends Thread {
 				}
 				
 			}
-			qbox.setContent("RUNDAN ÄR AVSLUTAD");
-			qbox.setContent("RESULTAT:");
+			qbox.setContent("Rundan är avslutad");
+			qbox.setContent("Resultat:");
 			int hPoints = 0;
 			String hPointsResult="";
 			//här preseneteras alla resultat dessutom kollas vem som har högst poäng...
@@ -74,7 +82,7 @@ public class QuestionWriter extends Thread {
 			}
 			
 			qbox.setContent("VINNAREN ÄR: " + hPointsResult);
-			qbox.setContent("NÄSTA RUNDA BÖRJAR OM 20S");
+			qbox.setContent("\n Nästa runda börjar om 20s");
 
 		}
 	}

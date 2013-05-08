@@ -62,13 +62,16 @@ public class UserThread extends Thread {
 						box.setContent(user.getName()+": "+s.substring(2));
 
 					} else {
+						if(!user.hasAnswered()){
+							out.println("Du svarade: " +s);
+						}
 						if (quest.isCorrect(s)) {
 							if (!user.hasAnswered()) {
-								out.println("DU SVARADE RÄTT");
+								out.println("Du svarade rätt");
 								user.addPoints(quest.getPoints());
 								out.println("&&&&&" + user.getPoints());
 							} else {
-								out.println("DU HAR REDAN SVARAT PÅ DENNA FRÅGAN");
+								out.println("Ett korrekt svar har redan registrerats");
 							}
 
 						}
