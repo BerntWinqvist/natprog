@@ -91,12 +91,25 @@ public class Question {
 		quest.add("Vilket år blev Skåne Svenskt?");
 		quest.add("Vad blir sin(PI / 2)");
 		quest.add("Var i Göteborg köper man fesk?");
-		quest.add("Can you do it now?");
+		quest.add("Can you do it now?");		
 		quest.add("Can you do it on the examen?");
 		quest.add("Vem har gjort hitlåten bajs i bastun?");
 		quest.add("Vem har huvudrollen i Terminator filmerna?");
 		quest.add("Vad heter den stora bergodalbanan i trä på Liseberg?");
 		quest.add("Vilken gud står som staty högst up på avenyn i Göteborg?");
+		quest.add("Vad kallas det när man klättrar utan rep, på lägre höjder (oftast stenblock)?");
+		quest.add("Vem sjunger om splitternya blåa sockiplast?");
+		quest.add("Vad heter den svenska motsvarigheten till Dvorak?");
+		quest.add("Vem var programledare för Jeopardy?");
+		quest.add("Vem drar Mot oändligheten och vidare!?");
+		quest.add("Vem spelade huvudrollen i de första 8 säsongerna av Two and a half men?");
+		quest.add("Vilken är huvudingrediensen i potatismos?");
+		quest.add("Vad är 15 * 15?");
+		quest.add("Hur många pappor finns det i C11?");
+		quest.add("Svart eller vitt?");
+		quest.add("Vilken datorsal i E-huset ligger mellan Hacke och Ravel?");
+		quest.add("Fortsätt Anders Kjelléns uttryck: Kör upp den i [...] ");
+		quest.add("Hur många prickar finns det på en tärning?");
 	
 	}
 	private void fillAnswer(){
@@ -158,7 +171,19 @@ public class Question {
 		answer.add("Arnold schwarzenegger");
 		answer.add("Balder");
 		answer.add("Poseidon");
-		
+		answer.add("bouldering");
+		answer.add("Björn Rosenström");
+		answer.add("svorak");
+		answer.add("Magnus Härenstam");
+		answer.add("buzz lightyear");
+		answer.add("Charlie Sheen");
+		answer.add("Potatis");
+		answer.add("225");
+		answer.add("3");
+		answer.add("Svart");
+		answer.add("Panter");
+		answer.add("Exponenten");
+		answer.add("21");
 		
 	}
 }
