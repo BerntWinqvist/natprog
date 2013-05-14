@@ -2,49 +2,34 @@ package Client;
 
 import java.io.*;
 import java.net.*;
-
 import javax.swing.*;
-
 
 public class Client {
 	private Socket socket;
 	private JPanel gp;
 
-	public Client(String host, String userName,JPanel gp) {
+	public Client(String host, String userName, JPanel gp) {
 		this.gp = gp;
 		connect(host, userName);
 	}
 
 	public void connect(String host, String userName) {
-
-		
-		
 		try {
-			socket = new Socket(host, 31337);		
+			socket = new Socket(host, 31337);
 			if (socket.isConnected()) {
-				System.out.println("Connected to the server");
 				OutputStream out = socket.getOutputStream();
-				String name = userName + "\n";					
+				String name = userName + "\n";
 				out.write(name.getBytes());
-				ClientSendThread send = new ClientSendThread("Send-thread",socket,gp);
-				ClientReceiveThread receive = new ClientReceiveThread("Receive-Thread",socket,gp);
+				ClientSendThread send = new ClientSendThread("Send-thread",
+						socket, gp);
+				ClientReceiveThread receive = new ClientReceiveThread(
+						"Receive-Thread", socket, gp);
 				send.start();
 				receive.start();
 			}
-			
 		} catch (IOException e) {
 			JOptionPane dialog = new JOptionPane();
-			dialog.showMessageDialog(null,"The server is not longer running");
+			dialog.showMessageDialog(null, "The server is not longer running");
 		}
-		
-	
 	}
-	
-//	public static void main(String args[]){
-//		
-//		new Client(args[0],args[1],args[2]);
-//	}
-//	
-	
-
 }

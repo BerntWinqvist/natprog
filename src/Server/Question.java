@@ -2,43 +2,41 @@ package Server;
 
 import java.util.*;
 
-
 public class Question {
 	private ArrayList<String> quest;
 	private ArrayList<String> answer;
 	private int lastIndex;
 	private long startTime;
 
-	
-	public Question(){
-	quest = new ArrayList<String>();
-	answer = new ArrayList<String>();
-	fillQuestion();
-	fillAnswer();
+	public Question() {
+		quest = new ArrayList<String>();
+		answer = new ArrayList<String>();
+		fillQuestion();
+		fillAnswer();
 	}
 
-	public String getQuestion(){
-		int a =quest.size();
+	public String getQuestion() {
+		int a = quest.size();
 		Random rand = new Random();
 		lastIndex = rand.nextInt(a);
 		startTime = System.currentTimeMillis();
 		return quest.get(lastIndex);
 	}
-	
-	public String getAnswer(){
+
+	public String getAnswer() {
 		return answer.get(lastIndex);
 	}
-	
-	public boolean isCorrect(String a){
+
+	public boolean isCorrect(String a) {
 		return getAnswer().equalsIgnoreCase(a);
 	}
-	
-	public int getPoints(){
+
+	public int getPoints() {
 		long elapsed = System.currentTimeMillis() - startTime;
-		return (int) (100 - elapsed/100);
+		return (int) (100 - elapsed / 100);
 	}
-	
-	private void fillQuestion(){
+
+	private void fillQuestion() {
 		quest.add("Hur många fingrar har en människa?");
 		quest.add("Vad heter Bart Simpsons pappa i förnamn?");
 		quest.add("Hur många protoner har en väteatom?");
@@ -91,7 +89,7 @@ public class Question {
 		quest.add("Vilket år blev Skåne Svenskt?");
 		quest.add("Vad blir sin(PI / 2)");
 		quest.add("Var i Göteborg köper man fesk?");
-		quest.add("Can you do it now?");		
+		quest.add("Can you do it now?");
 		quest.add("Can you do it on the examen?");
 		quest.add("Vem har gjort hitlåten bajs i bastun?");
 		quest.add("Vem har huvudrollen i Terminator filmerna?");
@@ -110,9 +108,10 @@ public class Question {
 		quest.add("Vilken datorsal i E-huset ligger mellan Hacke och Ravel?");
 		quest.add("Fortsätt Anders Kjelléns uttryck: Kör upp den i [...] ");
 		quest.add("Hur många prickar finns det på en tärning?");
-	
+
 	}
-	private void fillAnswer(){
+
+	private void fillAnswer() {
 		answer.add("10");
 		answer.add("Homer");
 		answer.add("1");
@@ -184,6 +183,5 @@ public class Question {
 		answer.add("Panter");
 		answer.add("Exponenten");
 		answer.add("21");
-		
 	}
 }

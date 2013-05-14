@@ -20,9 +20,9 @@ public class ServerPane extends JPanel {
 	private Server serv;
 	private JFrame frame;
 
-	public ServerPane(JTabbedPane tabbedPane, JFrame frame) { 
-		i=0;
-		this.frame=frame;
+	public ServerPane(JTabbedPane tabbedPane, JFrame frame) {
+		i = 0;
+		this.frame = frame;
 		this.tabbedPane = tabbedPane;
 		fields = new JTextField[2];
 		GridBagLayout layout = new GridBagLayout();
@@ -60,7 +60,6 @@ public class ServerPane extends JPanel {
 		c.gridx = 1;
 		c.gridy = 2;
 		add(comp, c);
-		System.out.println(fields[0]);
 
 		JButton button = new JButton("Create server");
 		c.fill = GridBagConstraints.HORIZONTAL;
@@ -89,10 +88,7 @@ public class ServerPane extends JPanel {
 		c.gridy = 5;
 		c.gridwidth = 1;
 		add(emptyLabel, c);
-		
-		
-		
-		
+
 		fields[1].addMouseListener(new MouseAdapter() {
 			public void mouseReleased(MouseEvent e) {
 				fields[1].setText("");
@@ -103,72 +99,56 @@ public class ServerPane extends JPanel {
 				fields[0].setText("");
 			}
 		});
-		
-
 	}
 
 	public JComponent inputPane(String text) {
-		
 		JLabel label = new JLabel(text + "   ");
 		JTextField field = new JTextField(text, 10);
 		field.setEditable(true);
 		JPanel p = new JPanel();
-	
 		p.setLayout(new BorderLayout());
 		p.add(label, BorderLayout.WEST);
 		p.add(field, BorderLayout.CENTER);
 		fields[i] = field;
 		i++;
 		return p;
-
 	}
-	
 
-
-	// Vad som händer när du trycker på knapps
+	// Vad som händer när du trycker på knappen
 	class ActionHandler implements ActionListener {
-
 		@Override
 		public void actionPerformed(ActionEvent event) {
-
 			String name = fields[1].getText();
 			String serverName = fields[0].getText();
-			
-			if(!serverName.equals("Server name") && !serverName.equals("") && !name.equals("User name  ") && !name.equals("")){
 
-			try {				
-				serv = new Server(serverName);
-				serv.start();
-				
-				tabbedPane.setEnabledAt(0,false);
-				tabbedPane.setEnabledAt(1,false);
-				tabbedPane.setEnabledAt(2,true);
-				tabbedPane.setSelectedIndex(2);
-				emptyLabel.setText("");
-				Client client = new Client("localhost", name,
-						(JPanel) tabbedPane.getComponentAt(2));			
-
-				((GamePane)	tabbedPane.getComponentAt(2)).setUserName(name);
-				((GamePane)	tabbedPane.getComponentAt(2)).setHost();
-				frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
-
-			} catch (Exception e) {
-				e.printStackTrace();		
-
-			}}else{
+			if (!serverName.equals("Server name") && !serverName.equals("")
+					&& !name.equals("User name  ") && !name.equals("")) {
+				try {
+					serv = new Server(serverName);
+					serv.start();
+					tabbedPane.setEnabledAt(0, false);
+					tabbedPane.setEnabledAt(1, false);
+					tabbedPane.setEnabledAt(2, true);
+					tabbedPane.setSelectedIndex(2);
+					emptyLabel.setText("");
+					Client client = new Client("localhost", name,
+							(JPanel) tabbedPane.getComponentAt(2));
+					((GamePane) tabbedPane.getComponentAt(2)).setUserName(name);
+					((GamePane) tabbedPane.getComponentAt(2)).setHost();
+					frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			} else {
 				JOptionPane dialog = new JOptionPane();
-				dialog.showMessageDialog(null,"Must choose a server name and/or a username");
-				
+				dialog.showMessageDialog(null,
+						"Must choose a server name and/or a username");
 			}
-
 		}
-
 	}
-	
-	public void stopServer(){
+
+	public void stopServer() {
 		serv.stopServer();
-		
-		
 	}
 
 }

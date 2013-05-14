@@ -6,31 +6,26 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.HashMap;
-
 import javax.swing.*;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
-
 import Client.Client;
 import General.MulticastRequest;
-import Server.Server;
 
 public class StartPane extends JPanel {
 	private JList serverList;
 	private DefaultListModel serverListModel;
-	private JButton button;
 	private JLabel label;
 	private JTextField field;
 	private GridBagLayout layout;
 	private GridBagConstraints c;
-	private String selectedServer; 
+	private String selectedServer;
 	private JTabbedPane tabbedPane;
-	private String address;
 	private HashMap<String, String> servers;
 	private JFrame frame;
 
 	public StartPane(JTabbedPane tabbedPane, JFrame frame) {
-		this.frame=frame;
+		this.frame = frame;
 		this.tabbedPane = tabbedPane;
 		layout = new GridBagLayout();
 		c = new GridBagConstraints();
@@ -164,7 +159,6 @@ public class StartPane extends JPanel {
 
 	}
 
-	// Försök till att fixa en JLabel och JTextField
 	public JComponent loginPane() {
 		final JTextField field = new JTextField("", 30);
 		field.setEditable(true);
@@ -192,43 +186,37 @@ public class StartPane extends JPanel {
 	}
 
 	class ActionHandler implements ActionListener {
-		
 		@Override
 		// När man trycker på Connect, här defineras vad som händer.
 		public void actionPerformed(ActionEvent event) {
 			String userName = field.getText();
 			String host = getHost();
-			
-			if(host != null && !userName.equals("")) {
+			if (host != null && !userName.equals("")) {
 				frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
-				tabbedPane.setEnabledAt(0,false);
-				tabbedPane.setEnabledAt(1,false);
-				tabbedPane.setEnabledAt(2,true);
+				tabbedPane.setEnabledAt(0, false);
+				tabbedPane.setEnabledAt(1, false);
+				tabbedPane.setEnabledAt(2, true);
 				tabbedPane.setSelectedIndex(2);
 				Client client = new Client(host, userName,
 						(JPanel) tabbedPane.getComponentAt(2));
-			((GamePane)	tabbedPane.getComponentAt(2)).setUserName(userName);
-			serverListModel.clear();
-			}else{
+				((GamePane) tabbedPane.getComponentAt(2)).setUserName(userName);
+				serverListModel.clear();
+			} else {
 				JOptionPane dialog = new JOptionPane();
-				dialog.showMessageDialog(null,"Must choose a server and/or a username");
+				dialog.showMessageDialog(null,
+						"Must choose a server and/or a username");
 			}
 		}
-
 	}
 
 	class ActionHandler2 implements ActionListener {
-
 		@Override
-		
 		public void actionPerformed(ActionEvent event) {
 			getServers();
-
 		}
 	}
 
 	public String getHost() {
 		return servers.get(selectedServer);
 	}
-
 }

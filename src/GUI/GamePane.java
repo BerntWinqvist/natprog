@@ -3,14 +3,9 @@ package GUI;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
 import javax.swing.*;
 
-import Client.Client;
-import GUI.StartPane.ServerSelectionListener;
-
 public class GamePane extends JPanel {
-	private JViewport pane;
 	public static JTextArea chatText = null;
 	public static JTextArea questionText = null;
 	public static JTextField chatLine = null;
@@ -22,9 +17,9 @@ public class GamePane extends JPanel {
 	private JTabbedPane tabbedPane;
 	private boolean host;
 	private JFrame frame;
-	
+
 	public GamePane(JTabbedPane tabbedPane, JFrame frame) {
-		this.frame=frame;
+		this.frame = frame;
 		host = false;
 		chatLineText = "";
 		this.tabbedPane = tabbedPane;
@@ -71,8 +66,6 @@ public class GamePane extends JPanel {
 		button.addActionListener(new ActionHandler2());
 		bPanel.add(button);
 		add(eastPanel);
-		
-
 	}
 
 	// Skapar listan som ska fyllas med users
@@ -81,7 +74,6 @@ public class GamePane extends JPanel {
 		userList = new JList(userListModel);
 		userList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		userList.setPrototypeCellValue("123456789012");
-	
 		JScrollPane scrollPane = new JScrollPane(userList);
 		JPanel panel = new JPanel();
 		panel.add(scrollPane);
@@ -90,23 +82,21 @@ public class GamePane extends JPanel {
 
 	// Metod för att fylla listan med inloggade users
 	public void setUser(String userName) {
-			userListModel.addElement(userName);
+		userListModel.addElement(userName);
 	}
 
-	public void removeUser(String userName){
+	public void removeUser(String userName) {
 		userListModel.removeElement(userName);
 	}
-	
+
 	public void setChatText(String s) {
 		chatText.append(s + "\n");
 		chatText.setCaretPosition(chatText.getText().length());
-
 	}
 
 	public String scanNextLine() {
 		if (chatLineText.isEmpty()) {
 			return "§§§§§§§§§§";
-
 		} else {
 			String temp = chatLineText;
 			chatLineText = "";
@@ -117,61 +107,53 @@ public class GamePane extends JPanel {
 	public void setUserName(String userName) {
 		yourName.setText("<html>Your user name: <br/>" + userName + "</html>");
 	}
-	
 
 	public void setPoints(String points) {
 		yourScore.setText("<html>Your Score: <br/>" + points + "</html>");
 	}
 
 	class ActionHandler implements ActionListener {
-
 		public void actionPerformed(ActionEvent event) {
 			chatLineText = chatLine.getText();
 			chatLine.setText("");
 		}
-
 	}
-	
+
 	class ActionHandler2 implements ActionListener {
 
 		public void actionPerformed(ActionEvent event) {
-		tabbedPane.setSelectedIndex(0);
-		tabbedPane.setEnabledAt(2,false);
-		tabbedPane.setEnabledAt(0,true);
-		tabbedPane.setEnabledAt(1,true);
-		userListModel.clear();
-		setPoints("0");
-		chatText.setText("");
-		
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		if(isHost()){
-			chatLineText="hostquit";
-			((ServerPane) tabbedPane.getComponentAt(1)).stopServer();
-		}else{
-			chatLineText="quit";
+			tabbedPane.setSelectedIndex(0);
+			tabbedPane.setEnabledAt(2, false);
+			tabbedPane.setEnabledAt(0, true);
+			tabbedPane.setEnabledAt(1, true);
+			userListModel.clear();
+			setPoints("0");
+			chatText.setText("");
+			frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+			if (isHost()) {
+				chatLineText = "hostquit";
+				((ServerPane) tabbedPane.getComponentAt(1)).stopServer();
+			} else {
+				chatLineText = "quit";
+			}
 		}
-		
-		}
-
 	}
-	
-	public boolean isHost(){
-		
+
+	public boolean isHost() {
 		return host;
 	}
-	
-	public void setHost(){
-		
+
+	public void setHost() {
 		host = true;
 	}
-	public void quit(){	
+
+	public void quit() {
 		chatText.setText("");
 		tabbedPane.setSelectedIndex(0);
-		tabbedPane.setEnabledAt(2,false);
-		tabbedPane.setEnabledAt(0,true);
-		tabbedPane.setEnabledAt(1,true);
-		chatLineText="quit";
+		tabbedPane.setEnabledAt(2, false);
+		tabbedPane.setEnabledAt(0, true);
+		tabbedPane.setEnabledAt(1, true);
+		chatLineText = "quit";
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
-
 }

@@ -17,7 +17,6 @@ public class QuestionWriter extends Thread {
 	}
 
 	public void run() {
-
 		while (isAlive) {
 			try {
 				Thread.sleep(15000);
@@ -30,9 +29,8 @@ public class QuestionWriter extends Thread {
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
-			
-			
-			qbox.setContent("\n"+"Ny runda" +"\n");
+
+			qbox.setContent("\n" + "Ny runda" + "\n");
 			String ques = quest.getQuestion();
 			for (int i = 0; i < 5; i++) {
 				int temp = i + 1;
@@ -54,41 +52,38 @@ public class QuestionWriter extends Thread {
 				} catch (InterruptedException e) {
 					e.printStackTrace();
 				}
-				
 			}
 			qbox.setContent("Rundan är avslutad");
 			qbox.setContent("Resultat:");
 			int hPoints = 0;
-			String hPointsResult="";
-			//här preseneteras alla resultat dessutom kollas vem som har högst poäng...
-			for (int i = 0; i < users.size(); i++) {	
+			String hPointsResult = "";
+			// här preseneteras alla resultat dessutom kollas vem som har högst
+			// poäng...
+			for (int i = 0; i < users.size(); i++) {
 				User u = users.get(i);
 				int points = u.getPoints();
 				String p = Integer.toString(points);
-				p+="P";
+				p += "P";
 				String result = u.getName();
-				result+=": ";
-				result+=p;
+				result += ": ";
+				result += p;
 				qbox.setContent(result);
-				if(points>hPoints){
+				if (points > hPoints) {
 					hPoints = points;
 					hPointsResult = u.getName();
-					hPointsResult+= " med ";
-					hPointsResult+= p;
+					hPointsResult += " med ";
+					hPointsResult += p;
 				}
 			}
-			for(int i=0; i<users.size();i++){
+			for (int i = 0; i < users.size(); i++) {
 				users.get(i).resetPoints();
 			}
-			
 			qbox.setContent("VINNAREN ÄR: " + hPointsResult);
 			qbox.setContent("\n Nästa runda börjar om 20s");
-
 		}
 	}
 
 	public void kill() {
 		isAlive = false;
-		
 	}
 }

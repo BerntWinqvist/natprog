@@ -8,25 +8,19 @@ public class Server extends Thread {
 	private ServerSocket serverSocket;
 	private int id;
 	private String serverName;
-	
+
 	public Server(String serverName) {
-		
 		id = 0;
 		try {
 			serverSocket = new ServerSocket(31337);
 		} catch (IOException e1) {
 			e1.printStackTrace();
 		}
-		
 		this.serverName = serverName;
 	}
 
 	public void run() {
-		
 		MulticastThread MT = new MulticastThread(serverName);
-		
-		
-
 		Vector<User> users = new Vector<User>();
 		Mailbox box = new Mailbox();
 		MailboxReader mReader = new MailboxReader(users, box);
@@ -47,13 +41,11 @@ public class Server extends Thread {
 						quest, id);
 				id++;
 				user.start();
-				System.out.println(users.isEmpty());
-				if(users.isEmpty() && !firstUser){
-					serverRunning=false;
+				if (users.isEmpty() && !firstUser) {
+					serverRunning = false;
 				}
-				firstUser=false;
+				firstUser = false;
 			}
-			
 
 		} catch (IOException e) {
 			MT.kill();
@@ -63,13 +55,12 @@ public class Server extends Thread {
 		}
 
 	}
-	
-	public void stopServer(){
+
+	public void stopServer() {
 		try {
 			serverSocket.close();
 		} catch (IOException e) {
 			e.printStackTrace();
-		}		
+		}
 	}
-
 }

@@ -4,26 +4,26 @@ import java.awt.BorderLayout;
 
 import javax.swing.*;
 
-
 public class GUI {
-private JTabbedPane tabbedPane;
+	private JTabbedPane tabbedPane;
+
 	public GUI() {
 		JFrame frame = new JFrame();
-		
-		//Tabbarna
+
+		// Tabbarna
 		tabbedPane = new JTabbedPane();
-		
-		StartPane sf = new StartPane(tabbedPane, frame);	
+
+		StartPane sf = new StartPane(tabbedPane, frame);
 		tabbedPane.addTab("Join game", sf);
-		
-		ServerPane sp = new ServerPane(tabbedPane,frame);
-		tabbedPane.addTab("Create game",sp);
-		
-		GamePane gp = new GamePane(tabbedPane,frame);
+
+		ServerPane sp = new ServerPane(tabbedPane, frame);
+		tabbedPane.addTab("Create game", sp);
+
+		GamePane gp = new GamePane(tabbedPane, frame);
 		tabbedPane.addTab("Current game", gp);
-		
+
 		tabbedPane.setSelectedIndex(0);
-		tabbedPane.setEnabledAt(2,false);
+		tabbedPane.setEnabledAt(2, false);
 
 		frame.getContentPane().add(tabbedPane, BorderLayout.CENTER);
 
@@ -31,9 +31,6 @@ private JTabbedPane tabbedPane;
 		frame.setVisible(true);
 		frame.setLocationRelativeTo(null);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		
-		
-		
 	}
 
 	public static void main(String args[]) {

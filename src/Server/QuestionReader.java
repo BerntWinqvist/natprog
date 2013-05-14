@@ -8,15 +8,14 @@ public class QuestionReader extends Thread {
 	private Vector<User> users;
 	private OutputStream out;
 	private boolean isAlive;
+
 	public QuestionReader(Vector<User> users, QuestionMailbox qBox) {
 		this.users = users;
 		this.qBox = qBox;
 		isAlive = true;
-
 	}
 
 	public void run() {
-
 		String s;
 		while (isAlive) {
 			s = qBox.getContent() + "\n";
@@ -31,12 +30,9 @@ public class QuestionReader extends Thread {
 				e.printStackTrace();
 			}
 		}
-
 	}
 
 	public void kill() {
 		isAlive = false;
-		
 	}
-
 }

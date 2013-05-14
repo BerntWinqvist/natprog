@@ -7,10 +7,10 @@ import javax.swing.DefaultListModel;
 
 public class MulticastRequest extends Thread {
 	private DefaultListModel serverList;
-	private HashMap<String,String> servers;
+	private HashMap<String, String> servers;
 
 	public MulticastRequest(DefaultListModel serverList,
-			HashMap<String,String> servers) {
+			HashMap<String, String> servers) {
 		this.serverList = serverList;
 		this.servers = servers;
 	}
@@ -36,22 +36,15 @@ public class MulticastRequest extends Thread {
 						received.length);
 				ms.receive(dpReceive);
 				InetAddress adr = dpReceive.getAddress();
-				String address = adr.toString().substring(1);				
+				String address = adr.toString().substring(1);
 				String receive = new String(dpReceive.getData(), 0,
 						dpReceive.getLength());
 				serverList.addElement(receive);
 				servers.put(receive, address);
-				
 				timeOut = System.currentTimeMillis();
-
 			}
-
 		} catch (Exception e) {
-
 			e.printStackTrace();
-
 		}
-
 	}
-
 }
