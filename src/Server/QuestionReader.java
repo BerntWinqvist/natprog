@@ -31,7 +31,6 @@ public class QuestionReader extends Thread {
 			}
 		}
 	}
-
 	public void kill() {
 		isAlive = false;
 	}

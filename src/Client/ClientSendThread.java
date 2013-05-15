@@ -41,10 +41,10 @@ public class ClientSendThread extends Thread {
 				} catch (Exception e1) {
 					e1.printStackTrace();
 				}
-				if (str.compareTo("quit") == 0) {
+				if (str.compareTo("@quit") == 0) {
 					quit = true;
 					if (gp.isHost()) {
-						out.println("quithost");
+						out.println("$quithost");
 					}
 				}
 			}

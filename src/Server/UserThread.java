@@ -43,7 +43,7 @@ public class UserThread extends Thread {
 			while (!quit) {
 				String s;
 				while ((s = in.readLine()) != null) {
-					if ((s.startsWith("quit"))) {
+					if ((s.startsWith("@quit"))) {
 						for (int i = 0; i < users.size(); i++) {
 							if (users.get(i).getId() == id) {
 								users.remove(i);
@@ -51,21 +51,23 @@ public class UserThread extends Thread {
 								quit = true;
 							}
 						}
-					} else if (s.startsWith("hostquit")) {
-						box.setContent("hostquit");
+					} else if (s.startsWith("$hostquit")) {
+						box.setContent("$hostquit");
 					} else if (s.startsWith("M ") || (s.startsWith("m "))) {
 						box.setContent(user.getName() + ": " + s.substring(2));
 					} else {
-						if (!user.hasAnswered()) {
-							out.println("Du svarade: " + s);
-						}
-						if (quest.isCorrect(s)) {
+						if (!user.isBetweenRounds()) {
 							if (!user.hasAnswered()) {
-								out.println("Du svarade rätt");
-								user.addPoints(quest.getPoints());
-								out.println("&&&&&" + user.getPoints());
+								out.println("Du svarade: " + s);
 							} else {
 								out.println("Ett korrekt svar har redan registrerats");
+							}
+							if (quest.isCorrect(s)) {
+								if (!user.hasAnswered()) {
+									out.println("Du svarade rätt");
+									user.addPoints(quest.getPoints());
+									out.println("&&&&&" + user.getPoints());
+								}
 							}
 						}
 					}

@@ -27,7 +27,7 @@ public class ClientReceiveThread extends Thread {
 						gp.setPoints(s.substring(5));
 					} else if (s.startsWith("%%%%%%")) {
 						gp.setUser(s.substring(6));
-					} else if (s.startsWith("hostquit")) {
+					} else if (s.startsWith("$hostquit")) {
 						gp.quit();
 					} else if (s.startsWith("¤dropped")) {
 						gp.removeUser(s.substring(8));

@@ -93,7 +93,9 @@ public class GamePane extends JPanel {
 		chatText.append(s + "\n");
 		chatText.setCaretPosition(chatText.getText().length());
 	}
-
+	public void clearChatText() {
+		chatText.setText("");
+	}
 	public String scanNextLine() {
 		if (chatLineText.isEmpty()) {
 			return "§§§§§§§§§§";
@@ -131,10 +133,10 @@ public class GamePane extends JPanel {
 			chatText.setText("");
 			frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 			if (isHost()) {
-				chatLineText = "hostquit";
+				chatLineText = "$hostquit";
 				((ServerPane) tabbedPane.getComponentAt(1)).stopServer();
 			} else {
-				chatLineText = "quit";
+				chatLineText = "@quit";
 			}
 		}
 	}
@@ -153,7 +155,7 @@ public class GamePane extends JPanel {
 		tabbedPane.setEnabledAt(2, false);
 		tabbedPane.setEnabledAt(0, true);
 		tabbedPane.setEnabledAt(1, true);
-		chatLineText = "quit";
+		chatLineText = "@quit";
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
 }

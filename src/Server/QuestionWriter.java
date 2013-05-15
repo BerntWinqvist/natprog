@@ -18,6 +18,7 @@ public class QuestionWriter extends Thread {
 
 	public void run() {
 		while (isAlive) {
+			qbox.setContent("\n Nästa runda börjar om 20s");
 			try {
 				Thread.sleep(15000);
 			} catch (InterruptedException e) {
@@ -33,6 +34,9 @@ public class QuestionWriter extends Thread {
 			qbox.setContent("\n" + "Ny runda" + "\n");
 			String ques = quest.getQuestion();
 			for (int i = 0; i < 5; i++) {
+				for (int e = 0; e < users.size(); e++) {
+					users.get(e).setBetweenRounds(false);
+				}
 				int temp = i + 1;
 				String q = "Fråga " + temp + ": ";
 				q += ques;
@@ -77,9 +81,9 @@ public class QuestionWriter extends Thread {
 			}
 			for (int i = 0; i < users.size(); i++) {
 				users.get(i).resetPoints();
+				users.get(i).setBetweenRounds(true);
 			}
 			qbox.setContent("VINNAREN ÄR: " + hPointsResult);
-			qbox.setContent("\n Nästa runda börjar om 20s");
 		}
 	}
 

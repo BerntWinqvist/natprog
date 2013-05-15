@@ -8,6 +8,7 @@ public class User {
 	private int points;
 	private boolean hasAnswered;
 	private int id;
+	private boolean betweenRounds;
 
 	public User(String name, Socket socket, int id) {
 		userName = name;
@@ -15,6 +16,7 @@ public class User {
 		this.id=id;
 		resetPoints();
 		hasAnswered = false;
+		betweenRounds = true;
 	}
 
 	public String getName() {
@@ -49,5 +51,11 @@ public class User {
 
 	public void setHasAnsweredToFalse() {
 		hasAnswered = false;
+	}
+	public boolean isBetweenRounds() {
+		return betweenRounds;
+	}
+	public void setBetweenRounds(boolean b) {
+		betweenRounds = b;
 	}
 }
