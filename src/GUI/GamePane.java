@@ -162,4 +162,7 @@ public class GamePane extends JPanel {
 		chatLineText = "@quit";
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
+	
+	
+	
 }

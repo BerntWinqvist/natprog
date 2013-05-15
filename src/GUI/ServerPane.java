@@ -134,6 +134,7 @@ public class ServerPane extends JPanel {
 					Client client = new Client("localhost", name,
 							(JPanel) tabbedPane.getComponentAt(2));
 					((GamePane) tabbedPane.getComponentAt(2)).clearUser();
+					((GamePane) tabbedPane.getComponentAt(2)).setPoints("0");
 					((GamePane) tabbedPane.getComponentAt(2)).setUserName(name);
 					((GamePane) tabbedPane.getComponentAt(2)).setHost(true);
 					((GamePane) tabbedPane.getComponentAt(2)).clearChatText();
