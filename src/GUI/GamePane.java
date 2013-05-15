@@ -84,7 +84,10 @@ public class GamePane extends JPanel {
 	public void setUser(String userName) {
 		userListModel.addElement(userName);
 	}
-
+	
+	public void clearUser() {
+		userListModel.clear();
+	}
 	public void removeUser(String userName) {
 		userListModel.removeElement(userName);
 	}
