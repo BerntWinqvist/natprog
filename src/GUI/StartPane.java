@@ -200,6 +200,7 @@ public class StartPane extends JPanel {
 				Client client = new Client(host, userName,
 						(JPanel) tabbedPane.getComponentAt(2));
 				((GamePane) tabbedPane.getComponentAt(2)).setUserName(userName);
+				((GamePane) tabbedPane.getComponentAt(2)).clearChatText();
 				((GamePane) tabbedPane.getComponentAt(2)).setChatText("Välkommen " + userName + ", du är uppkopplad.");
 				serverListModel.clear();
 			} else {
