@@ -141,6 +141,7 @@ public class GamePane extends JPanel {
 			} else {
 				chatLineText = "@quit";
 			}
+			setHost(false);
 		}
 	}
 
@@ -148,8 +149,8 @@ public class GamePane extends JPanel {
 		return host;
 	}
 
-	public void setHost() {
-		host = true;
+	public void setHost(boolean b) {
+		host = b;
 	}
 
 	public void quit() {

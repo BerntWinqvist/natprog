@@ -135,7 +135,7 @@ public class ServerPane extends JPanel {
 							(JPanel) tabbedPane.getComponentAt(2));
 					((GamePane) tabbedPane.getComponentAt(2)).clearUser();
 					((GamePane) tabbedPane.getComponentAt(2)).setUserName(name);
-					((GamePane) tabbedPane.getComponentAt(2)).setHost();
+					((GamePane) tabbedPane.getComponentAt(2)).setHost(true);
 					((GamePane) tabbedPane.getComponentAt(2)).clearChatText();
 					((GamePane) tabbedPane.getComponentAt(2)).setChatText("Välkommen " + name + ". Spelet är startat, första rundan börjar snart.");
 					frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
